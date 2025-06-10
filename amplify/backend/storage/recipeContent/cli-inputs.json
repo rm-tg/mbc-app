@@ -1,0 +1,16 @@
+{
+  "resourceName": "recipeContent",
+  "policyUUID": "0b5c7ae3",
+  "bucketName": "mbct4sgb77c6c1879ac42f09d62cb2cfc68fbb4",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger3d9258dd",
+  "groupAccess": {}
+}

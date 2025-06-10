@@ -1,0 +1,16 @@
+projects:
+  mbct4sg:
+    schemaPath: amplify/backend/api/mbct4sg/build/schema.graphql
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+      - src/API.ts
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: src/graphql
+        region: us-east-2
+        apiId: null
+        maxDepth: 2

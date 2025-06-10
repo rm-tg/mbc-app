@@ -1,0 +1,18 @@
+{
+  "AppSyncApiName": "mbct4sg",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmbct4sgd4770353",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "authRoleName": {
+    "Ref": "AuthRoleName"
+  },
+  "unauthRoleName": {
+    "Ref": "UnauthRoleName"
+  },
+  "publicAccess": true
+}

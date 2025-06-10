@@ -23,6 +23,7 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+    "projectId": "5b067b48-296c-4f67-9e3a-21371314438c",
     "plugins": [
       "expo-router",
       [
