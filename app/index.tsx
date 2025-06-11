@@ -4,7 +4,7 @@ import * as Notifications from 'expo-notifications';
 import { useRouter } from 'expo-router';
 import * as React from 'react';
 import { useState } from 'react';
-import { Alert, Button, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Banner from '../components/Banner';
 import { createPushToken } from '../src/graphql/mutations';
 
@@ -47,36 +47,16 @@ export default function HomeScreen() {
     }
   }
 
-  type GridItem = {
-    id: string;
-    title: string;
-    navigationID: string;
-  };
-
-  const data: GridItem[] = [
-    { id: '1', title: 'Volunteering', navigationID: "Volunteering" },
-    { id: '2', title: 'Appointments', navigationID: "Appointments" },
-    { id: '3', title: 'Snap Info', navigationID: "SnapInfo" },
-    { id: '4', title: 'Recipes', navigationID: "Recipes" },
-    { id: '5', title: 'Admin', navigationID: "SignIn" },
-    { id: '6', title: 'FAQ/About', navigationID: "About" },
-  ];
-
-  const renderItem = ({ item }: { item: GridItem }) => (
-    <TouchableOpacity
-      style={{ width: 165, height: 165, padding: 10, backgroundColor: "#00274C", borderRadius: 20, justifyContent: 'center', margin: 10 }}
-      onPress={() => router.push(('/' + item.navigationID.toLowerCase()) as any)}
-      activeOpacity={0.7}
-    >
-      <Text style={{ color: "white", fontFamily: "Avenir Next", fontSize: 20, fontWeight: "600", alignSelf: 'center', }}>
-        {item.title}
-      </Text>
-    </TouchableOpacity>
-  );
-
   return (
-    <View style={styles.mainContainer}>
+    <ScrollView
+      style={styles.mainContainer}
+      contentContainerStyle={{ alignItems: 'center' }} // Add this line
+    > 
       <Banner />
+      <TouchableOpacity
+        style={{ position: 'absolute', top: 0, right: 0, width: 100, height: 100, opacity: 0, zIndex: 10,}}
+        onPress={() => router.push('/signin')}
+      />
       <Text style={styles.welcomeText}>
         Welcome to the Maize {'\n'}
         & Blue Cupboard! 
@@ -86,17 +66,75 @@ export default function HomeScreen() {
         source={require("../assets/homescreen-food.png")}
         style={styles.image} />
 
-      <Button title="Enable Notifications" onPress={registerForPushNotificationsAsync} />
-      {expoPushToken ? <Text>Your Push Token: {expoPushToken}</Text> : null}
+      {/* Schedule Visit button */}
+      <TouchableOpacity
+        style={styles.scheduleButton}
+        onPress={() => router.push('/appointments')}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.scheduleButtonText}>Schedule Visit</Text>
+      </TouchableOpacity>
 
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
+      {/* Blue menu buttons */}
+      <View style={styles.menuContainer}>
+        {/* First row */}
+        <View style={styles.menuRow}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/about')}
+            activeOpacity={0.7}
+          >
+            <Image
+              source={require('../assets/about-menu.png')}
+              style={styles.menuItemIcon}
+            />
+            <Text style={styles.menuItemText}>About</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/volunteering')}
+            activeOpacity={0.7}
+          >
+            <Image
+              source={require('../assets/how-to-help-menu.png')}
+              style={styles.menuItemIcon}
+            />
+            <Text style={styles.menuItemText}>How to Help</Text>
+          </TouchableOpacity>
+        </View>
+        
+        {/* Second row */}
+        <View style={styles.menuRow}>
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/recipes')}
+            activeOpacity={0.7}
+          >
+            <Image
+              source={require('../assets/recipes-menu.png')}
+              style={styles.menuItemIcon}
+            />
+            <Text style={styles.menuItemText}>Recipes</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => router.push('/snapinfo')}
+            activeOpacity={0.7}
+          >
+            <Image
+              source={require('../assets/food-assistance-menu.png')}
+              style={styles.menuItemIcon}
+            />
+            <Text style={styles.menuItemText}>Food{'\n'}Assistance</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <Button title="Enable Notifications" onPress={registerForPushNotificationsAsync} />
+      {expoPushToken ? <Text style={{marginBottom: 20, marginLeft: 30}}>Your Push Token: {expoPushToken}</Text> : null}
+    </ScrollView>
   );
 }
 
@@ -104,7 +142,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
   },
   welcomeText: {
     color: '#00274C',
@@ -117,20 +154,72 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   image: {
-    width: 264,
-    height: 225.83,
-    resizeMode: "contain",
+    width: '67.7%',
+    height: undefined, // need this line, otherwise the image will not scale properly
+    resizeMode: 'contain',
+    aspectRatio: 264 / 225.83,
   },
-  gridsContainer: {
-    backgroundColor: "White",
-    width: "70%",
-    height: "12%",
-    borderColor: "Black",
-    borderWidth: 1,
-    borderRadius: 20,
-    marginBottom: 20,
+  scheduleButton: {
+    backgroundColor: '#FFCB05',
+    width: '90%', // 351 / 390
+    paddingVertical: 21,
+    marginTop: -7,
+    borderRadius: 18,
     alignItems: 'center',
-    justifyContent: 'center'
+
+    // Drop shadow
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,  // 30% opacity
+    shadowRadius: 4,     // 4px blur
+    elevation: 4,        // Android equivalent
+  },
+  scheduleButtonText: {
+    fontSize: 30,
+    fontFamily: "Montserrat_700Bold",
+    color: '#00274C',
+  },
+  menuContainer: {
+    width: '90%',
+    marginTop: 12,
+  },
+  menuRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 13,
+  },
+  menuItem: {
+    width: '48.4%',
+    maxHeight: 123,
+    aspectRatio: 170/123,
+    backgroundColor: '#00274C',
+    borderRadius: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    // Drop shadow
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,  // 30% opacity
+    shadowRadius: 4,     // 4px blur
+    elevation: 4,        // Android equivalent
+  },
+  menuItemText: {
+    color: 'white',
+    fontSize: 20,
+    fontFamily: "Montserrat_700Bold",
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  menuItemIcon: {
+    width: 40,
+    height: 40,
   },
 });
 
