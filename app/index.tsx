@@ -2,6 +2,7 @@ import { API, graphqlOperation } from 'aws-amplify';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import { useState } from 'react';
 import { Alert, Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -48,93 +49,104 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScrollView
-      style={styles.mainContainer}
-      contentContainerStyle={{ alignItems: 'center' }} // Add this line
-    > 
-      <Banner />
+    <View style={{ flex: 1, position: 'relative' }}>
+      <StatusBar hidden />
       <TouchableOpacity
-        style={{ position: 'absolute', top: 0, right: 0, width: 100, height: 100, opacity: 0, zIndex: 10,}}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: 40,
+          height: 40,
+          backgroundColor: 'rgba(0,0,0,0.01)',
+          zIndex: 10, // ensure it's on top
+        }}
         onPress={() => router.push('/signin')}
       />
-      <Text style={styles.welcomeText}>
-        Welcome to the Maize {'\n'}
-        & Blue Cupboard! 
-      </Text>
+      <ScrollView
+        style={styles.mainContainer}
+        contentContainerStyle={{ alignItems: 'center' }} // Add this line
+      > 
+        <Banner />
+        <Text style={styles.welcomeText}>
+          Welcome to the Maize {'\n'}
+          & Blue Cupboard! 
+        </Text>
 
-      <Image
-        source={require("../assets/homescreen-food.png")}
-        style={styles.image} />
+        <Image
+          source={require("../assets/homescreen-food.png")}
+          style={styles.image} />
 
-      {/* Schedule Visit button */}
-      <TouchableOpacity
-        style={styles.scheduleButton}
-        onPress={() => router.push('/appointments')}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.scheduleButtonText}>Schedule Visit</Text>
-      </TouchableOpacity>
+        {/* Schedule Visit button */}
+        <TouchableOpacity
+          style={styles.scheduleButton}
+          onPress={() => router.push('/appointments')}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.scheduleButtonText}>Schedule Visit</Text>
+        </TouchableOpacity>
 
-      {/* Blue menu buttons */}
-      <View style={styles.menuContainer}>
-        {/* First row */}
-        <View style={styles.menuRow}>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => router.push('/about')}
-            activeOpacity={0.7}
-          >
-            <Image
-              source={require('../assets/about-menu.png')}
-              style={styles.menuItemIcon}
-            />
-            <Text style={styles.menuItemText}>About</Text>
-          </TouchableOpacity>
+        {/* Blue menu buttons */}
+        <View style={styles.menuContainer}>
+          {/* First row */}
+          <View style={styles.menuRow}>
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => router.push('/about')}
+              activeOpacity={0.7}
+            >
+              <Image
+                source={require('../assets/about-menu.png')}
+                style={styles.menuItemIcon}
+              />
+              <Text style={styles.menuItemText}>About</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => router.push('/volunteering')}
+              activeOpacity={0.7}
+            >
+              <Image
+                source={require('../assets/how-to-help-menu.png')}
+                style={styles.menuItemIcon}
+              />
+              <Text style={styles.menuItemText}>How to Help</Text>
+            </TouchableOpacity>
+          </View>
           
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => router.push('/volunteering')}
-            activeOpacity={0.7}
-          >
-            <Image
-              source={require('../assets/how-to-help-menu.png')}
-              style={styles.menuItemIcon}
-            />
-            <Text style={styles.menuItemText}>How to Help</Text>
-          </TouchableOpacity>
+          {/* Second row */}
+          <View style={styles.menuRow}>
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => router.push('/recipes')}
+              activeOpacity={0.7}
+            >
+              <Image
+                source={require('../assets/recipes-menu.png')}
+                style={styles.menuItemIcon}
+              />
+              <Text style={styles.menuItemText}>Recipes</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={styles.menuItem}
+              onPress={() => router.push('/snapinfo')}
+              activeOpacity={0.7}
+            >
+              <Image
+                source={require('../assets/food-assistance-menu.png')}
+                style={styles.menuItemIcon}
+              />
+              <Text style={styles.menuItemText}>Food{'\n'}Assistance</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        
-        {/* Second row */}
-        <View style={styles.menuRow}>
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => router.push('/recipes')}
-            activeOpacity={0.7}
-          >
-            <Image
-              source={require('../assets/recipes-menu.png')}
-              style={styles.menuItemIcon}
-            />
-            <Text style={styles.menuItemText}>Recipes</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity
-            style={styles.menuItem}
-            onPress={() => router.push('/snapinfo')}
-            activeOpacity={0.7}
-          >
-            <Image
-              source={require('../assets/food-assistance-menu.png')}
-              style={styles.menuItemIcon}
-            />
-            <Text style={styles.menuItemText}>Food{'\n'}Assistance</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
 
-      <Button title="Enable Notifications" onPress={registerForPushNotificationsAsync} />
-      {expoPushToken ? <Text style={{marginBottom: 20, marginLeft: 30}}>Your Push Token: {expoPushToken}</Text> : null}
-    </ScrollView>
+        <Button title="Enable Notifications" onPress={registerForPushNotificationsAsync} />
+        {expoPushToken ? <Text style={{marginBottom: 20, marginLeft: 30}}>Your Push Token: {expoPushToken}</Text> : null}
+      </ScrollView>
+    </View>
   );
 }
 
@@ -154,10 +166,10 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   image: {
-    width: '67.7%',
-    height: undefined, // need this line, otherwise the image will not scale properly
-    resizeMode: 'contain',
+    width: '67.7%',// need this line, otherwise the image will not scale properly
     aspectRatio: 264 / 225.83,
+    resizeMode: 'contain',
+    height: undefined, // This is important to maintain aspect ratio
   },
   scheduleButton: {
     backgroundColor: '#FFCB05',
