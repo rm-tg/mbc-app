@@ -1,33 +1,69 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, Image, Linking, TouchableOpacity } from 'react-native';
-
+import { Image, StyleSheet, View } from 'react-native';
 
 const MenuBar = () => {
-
     return (
         <View style={styles.menuBarContainer}>
-            <Text>MENU BAR</Text>
-            
-        </View>
+            <View style={styles.iconContainer}>
+                {/* Left-aligned group */}
+                <View style={styles.leftGroup}>
+                    <Image
+                        source={require("../assets/m-logo.png")}
+                        style={styles.blockm}
+                    />
+                    <Image
+                        source={require("../assets/MBC-signature-stationery-white 3.png")}
+                        style={styles.logo}
+                    />
+                </View>
 
+                {/* Right-aligned bell, need to add link to notification page*/}
+                <Image
+                    source={require("../assets/notification-bell.png")}
+                    style={styles.bell}
+                />
+            </View>
+        </View>
     );
 };
 
+
 const styles = StyleSheet.create({
     menuBarContainer: {
-        backgroundColor: '#FFFF0F',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        height: '14%',
+        backgroundColor: '#FFFFFF',
+        height: 80,
         width: '100%',
-        marginBottom: 19,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingBottom: 14,
     },
-    image: {
-        width: '15.1%',
-        height: undefined,
-        aspectRatio: 59 / 36,
-        marginBottom: 19,
+    iconContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        width: '91.28%', // 356/390
+        height: 31,
+    },
+    leftGroup: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+    },
+    blockm: {
+        width: 50,
+        height: 31,
         resizeMode: 'contain',
+    },
+    logo: {
+        width: 231,
+        height: 29,
+        resizeMode: 'contain',
+        marginBottom: 2,
+    },
+    bell: {
+        width: 28,
+        height: 28,
+        resizeMode: 'contain',
+        marginBottom: 3,
     },
 });
 
