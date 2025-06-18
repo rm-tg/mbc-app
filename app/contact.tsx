@@ -1,15 +1,19 @@
+import MenuBar from '@/components/MenuBar';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Banner from '../components/Banner';
 
 export default function ContactScreen() {
 
   return (
       <View style={styles.mainContainer}>
-        <Banner/>
-          <Text style={styles.welcomeText}>
-              this is the Contact screen
-          </Text>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <Banner/>
+            <Text style={styles.welcomeText}>
+                this is the Contact screen
+            </Text>
+        </ScrollView>
+        <MenuBar/>
       </View>
   );
 }
@@ -19,6 +23,8 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
+      position: 'relative',
+      paddingBottom: 100,
     },
     welcomeText: {
       color: "black", 
@@ -54,5 +60,11 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       alignItems: 'center', // Center horizontally
       justifyContent: 'center'
-    }
+    },
+    scrollContainer: {
+      flexGrow: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      paddingBottom: 100,
+    },
   });

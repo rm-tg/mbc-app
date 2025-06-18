@@ -1,3 +1,4 @@
+import MenuBar from '@/components/MenuBar';
 import { useRouter } from 'expo-router';
 import * as React from 'react';
 import { FlatList, Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -32,82 +33,88 @@ function AppointmentsScreen() {
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <Banner />
-      <Text style={styles.welcomeText}>
-        Visit the Pantry
-      </Text>
-      <Text style={styles.mainText}>
-        Lorem ipsum dolor sit amet consecte. Nunc in et orci mauris habitant nisl amet ornare.
-      </Text>
-      <Image
-        style={{ ...styles.image, aspectRatio: 326 / 190 }}
-        source={require('../assets/pantry.png')}
-      />
-      <TouchableOpacity onPress={() => handlePress('https://calendly.com/mbcappointments/mbc-shopping-appointments')}>
-        <Text style={styles.linkText}>
-          Click here to schedule a visit
+    <View style={{ flex: 1, position: 'relative' }}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Banner />
+        <Text style={styles.welcomeText}>
+          Visit the Pantry
         </Text>
-      </TouchableOpacity>
-      <Text style={styles.subTitle}>
-        What we offer
-      </Text>
-      <Text style={styles.mainText}>
-        Lorem ipsum dolor sit amet consecte. Nunc in et orci mauris habitant nisl amet ornare.
-      </Text>
-      <FlatList
-        data={data}
-        style={{ marginTop: 11, flexGrow: 0 }}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        scrollEnabled={false}
-      />
-      <View style={{ width: '100%', alignItems: 'center' }}>
-        <Text style={styles.subTitle}>
-          Our Hours
+        <Text style={styles.mainText}>
+          Lorem ipsum dolor sit amet consecte. Nunc in et orci mauris habitant nisl amet ornare.
         </Text>
-        <View style={styles.hoursContainer}>
-          <Text style={{ ...styles.hoursText, width: '50%' }}>
-            {`Monday - Friday\nSaturday\nSunday`}
-          </Text>
-          <Text style={styles.hoursText}>
-            {`8:00 am - 7:00 pm\nClosed\n8:00 am - 5:00 pm`}
-          </Text>
-        </View>
-      </View>
-      <Text style={styles.subTitle}>
-        Location
-      </Text>
-      <Image
-        style={{ ...styles.image, aspectRatio: 326 / 182 }}
-        source={require('../assets/location-map.png')}
-      />
-      <TouchableOpacity onPress={() => handlePress('https://www.google.com/maps/place/Betsy+Barbour+Residence,+420+S+State+St,+Ann+Arbor,+MI+48109/@42.2772944,-83.7437539,17z/data=!3m1!4b1!4m5!3m4!1s0x883cae38ac94a547:0xf8a4be6e818a1f4!8m2!3d42.2772944!4d-83.7415652')}>
-        <Text style={styles.locationLink}>
-          420 S State St{'\n'}
-          Ann Arbor, MI 48109
-        </Text>
-      </TouchableOpacity>
-      <Text style={styles.mainText}>
-        We are located in the basement of the Betsy{'\n'}
-        Barbour Residence Hall, please enter via the{'\n'}
-        Maynard entrance only to ensure privacy for{'\n'}
-        residents.
-      </Text>
-      <Text style={{ ...styles.mainText, color: '#781313', marginTop: 23 }}>
-        Contact us if you need ramp or elevator access.
-      </Text>
-      <TouchableOpacity onPress={() => router.push('/contactus')}>
         <Image
-          style={styles.contact_us_button}
-          source={require('../assets/contact-us-button.png')}
+          style={{ ...styles.image, aspectRatio: 326 / 190 }}
+          source={require('../assets/pantry.png')}
         />
-      </TouchableOpacity>
-      <Image
-        style={styles.mbcSignature}
-        source={require('../assets/mbc-signature-horizontal.png')}
-      />
-    </ScrollView>
+        <TouchableOpacity onPress={() => handlePress('https://calendly.com/mbcappointments/mbc-shopping-appointments')}>
+          <Text style={styles.linkText}>
+            Click here to schedule a visit
+          </Text>
+        </TouchableOpacity>
+        <Text style={styles.subTitle}>
+          What we offer
+        </Text>
+        <Text style={styles.mainText}>
+          Lorem ipsum dolor sit amet consecte. Nunc in et orci mauris habitant nisl amet ornare.
+        </Text>
+        <FlatList
+          data={data}
+          style={{ marginTop: 11, flexGrow: 0 }}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          scrollEnabled={false}
+        />
+        <View style={{ width: '100%', alignItems: 'center' }}>
+          <Text style={styles.subTitle}>
+            Our Hours
+          </Text>
+          <View style={styles.hoursContainer}>
+            <Text style={{ ...styles.hoursText, width: '50%' }}>
+              {`Monday - Friday\nSaturday\nSunday`}
+            </Text>
+            <Text style={styles.hoursText}>
+              {`8:00 am - 7:00 pm\nClosed\n8:00 am - 5:00 pm`}
+            </Text>
+          </View>
+        </View>
+        <Text style={styles.subTitle}>
+          Location
+        </Text>
+        <Image
+          style={{ ...styles.image, aspectRatio: 326 / 182 }}
+          source={require('../assets/location-map.png')}
+        />
+        <TouchableOpacity onPress={() => handlePress('https://www.google.com/maps/place/Betsy+Barbour+Residence,+420+S+State+St,+Ann+Arbor,+MI+48109/@42.2772944,-83.7437539,17z/data=!3m1!4b1!4m5!3m4!1s0x883cae38ac94a547:0xf8a4be6e818a1f4!8m2!3d42.2772944!4d-83.7415652')}>
+          <Text style={styles.locationLink}>
+            420 S State St{'\n'}
+            Ann Arbor, MI 48109
+          </Text>
+        </TouchableOpacity>
+        <Text style={styles.mainText}>
+          We are located in the basement of the Betsy{'\n'}
+          Barbour Residence Hall, please enter via the{'\n'}
+          Maynard entrance only to ensure privacy for{'\n'}
+          residents.
+        </Text>
+        <Text style={{ ...styles.mainText, color: '#781313', marginTop: 23 }}>
+          Contact us if you need ramp or elevator access.
+        </Text>
+        <TouchableOpacity onPress={() => router.push('/contactus')}>
+          <Image
+            style={styles.contact_us_button}
+            source={require('../assets/contact-us-button.png')}
+          />
+        </TouchableOpacity>
+        <Image
+          style={styles.mbcSignature}
+          source={require('../assets/mbc-signature-horizontal.png')}
+        />
+      </ScrollView>
+      <View>
+        <MenuBar/>
+      </View>
+    </View>
+    
   );
 }
 
@@ -116,7 +123,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingBottom: 83,
+    paddingBottom: 100,
   },
   welcomeText: {
     color: '#00274C',

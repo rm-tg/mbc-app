@@ -1,3 +1,4 @@
+import MenuBar from '@/components/MenuBar';
 import { GraphQLResult } from '@aws-amplify/api-graphql';
 import { API } from 'aws-amplify';
 import * as React from 'react';
@@ -71,6 +72,7 @@ function RecipesScreen() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.container} // Corrected style referencetainer}
       />
+      <MenuBar/>
     </View>
   );
 }
@@ -91,6 +93,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     width: '100%', // Ensure the container takes full width
+    paddingBottom: 100,
   },
   itemContainer: {
     marginBottom: 20,

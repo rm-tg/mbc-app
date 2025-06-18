@@ -1,60 +1,162 @@
 import { useRoute } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const router = useRouter();
 
 const MenuBar = () => {
     const route = useRoute();
 
-    var home = "../assets/MenuBar/homeIcon.png";
-    var homeSelected = "../assets/MenuBar/homeIconSelected.png";
-    var schedule = "../assets/MenuBar/schedIcon.png";
-    var scheduleSelected = "../assets/MenuBar/schedIconSelected.png";
-    var faq = "../assets/MenuBar/faqIcon.png";
-    var faqSelected = "../assets/MenuBar/faqIconSelected.png";
-    var recipies = "../assets/MenuBar/recipiesIcon.png";
-    var recipiesSelected = "../assets/MenuBar/recipiesIconSelected.png";
-    var contact = "../assets/MenuBar/contactIcon.png";
-    var contactSelected = "../assets/MenuBar/contactIconSelected.png";
+    var onIndex = false;
+    var onSchedule = false;
+    var onFAQ = false;
+    var onRecipes = false;
+    var onContact = false;
 
-    if(route.name == "index"){
-        home = "../assets/MenuBar/homeIconSelected.png";
+    switch(route.name){
+        case 'index': {
+            onIndex = true;
+            break;
+        }
+        case 'appointments': {
+            onSchedule = true;
+            break;
+        }
+        case 'faq': {
+            onFAQ = true;
+            break;
+        }
+        case 'recipes': {
+            onRecipes = true;
+            break;
+        }
+        case 'contact': {
+            onContact = true;
+            break;
+        }
     }
+
+    
 
     return (
         <View style={styles.menuBarContainer}>
-            <View style={styles.iconContainer}>
+            <View style={styles.iconContainer}>    
                 <Pressable onPress={() => router.push('/')}>
-                    <Image
-                        source={require("../assets/MenuBar/homeIcon.png")}
-                        style={styles.icon}
-                    />
+                    {onIndex ? (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/homeIconSelected.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuTextHighlight}>
+                                Home 
+                            </Text>
+                        </View>
+                    ) : (
+                        <View>
+                            <Image
+                                source={require("../assets/MenuBar/homeIcon.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuText}>
+                                Home 
+                            </Text>
+                        </View>
+                    )}
                 </Pressable>
+                
                 <Pressable onPress={() => router.push('/appointments')}>
-                    <Image
-                        source={require("../assets/MenuBar/schedIcon.png")}
-                        style={styles.icon}
-                    />
+                    {onSchedule ? (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/schedIconSelected.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuTextHighlight}>
+                                Schedule 
+                            </Text>
+                        </View>
+                    ) : (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/schedIcon.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuText}>
+                                Schedule 
+                            </Text>
+                        </View>
+                    )}
                 </Pressable>
                 <Pressable onPress={() => router.push('/faq')}>
-                    <Image
-                        source={require("../assets/MenuBar/faqIcon.png")}
-                        style={styles.icon}
-                    />
+                    {onFAQ ? (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/faqIconSelected.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuTextHighlight}>
+                                FAQ 
+                            </Text>
+                        </View>
+                    ) : (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/faqIcon.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuText}>
+                                FAQ 
+                            </Text>
+                        </View>
+                    )}
                 </Pressable>
                 <Pressable onPress={() => router.push('/recipes')}>
-                    <Image
-                        source={require("../assets/MenuBar/recipiesIcon.png")}
-                        style={styles.icon}
-                    />
+                    {onRecipes ? (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/recipiesIconSelected.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuTextHighlight}>
+                                Recipes 
+                            </Text>
+                        </View>
+                    ) : (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/recipiesIcon.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuText}>
+                                Recipes 
+                            </Text>
+                        </View>
+                    )}
                 </Pressable>
                 <Pressable onPress={() => router.push('/contact')}>
-                    <Image
-                        source={require("../assets/MenuBar/contactIcon.png")}
-                        style={styles.icon}
-                    />
+                    {onContact ? (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/contactIconSelected.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuTextHighlight}>
+                                Contact
+                            </Text>
+                        </View>
+                    ) : (
+                        <View style={styles.iconButton}>
+                            <Image
+                                source={require("../assets/MenuBar/contactIcon.png")}
+                                style={styles.icon}
+                            />
+                            <Text style={styles.menuText}>
+                                Contact
+                            </Text>
+                        </View>
+                    )}
                 </Pressable>
             </View>
         </View>
@@ -88,13 +190,29 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'flex-end',
         width: '91.28%', // 356/390
-        height: 31,
     },
     icon: {
         width: 28,
         height: 28,
         resizeMode: 'contain',
-        marginBottom: 3,
+        //alignItems: 'center',
+    },
+    iconButton: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    menuText: {
+        color: '#00274C',
+        fontFamily: "Montserrat_500",
+        fontSize: 12,
+        alignContent: 'center',
+    },
+    menuTextHighlight: {
+        color: '#00274C',
+        fontFamily: "Montserrat_700Bold",
+        fontSize: 12,
+        alignContent: 'center',
     },
 });
 
