@@ -42,7 +42,7 @@ const MenuBar = () => {
             <View style={styles.iconContainer}>    
                 <Pressable onPress={() => router.push('/')}>
                     {onIndex ? (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/homeIconSelected.png")}
                                 style={styles.icon}
@@ -52,7 +52,7 @@ const MenuBar = () => {
                             </Text>
                         </View>
                     ) : (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/homeIcon.png")}
                                 style={styles.icon}
@@ -67,7 +67,7 @@ const MenuBar = () => {
                 
                 <Pressable onPress={() => router.push('/appointments')}>
                     {onSchedule ? (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/schedIconSelected.png")}
                                 style={styles.icon}
@@ -77,7 +77,7 @@ const MenuBar = () => {
                             </Text>
                         </View>
                     ) : (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/schedIcon.png")}
                                 style={styles.icon}
@@ -90,7 +90,7 @@ const MenuBar = () => {
                 </Pressable>
                 <Pressable onPress={() => router.push('/faq')}>
                     {onFAQ ? (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/faqIconSelected.png")}
                                 style={styles.icon}
@@ -100,7 +100,7 @@ const MenuBar = () => {
                             </Text>
                         </View>
                     ) : (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/faqIcon.png")}
                                 style={styles.icon}
@@ -113,7 +113,7 @@ const MenuBar = () => {
                 </Pressable>
                 <Pressable onPress={() => router.push('/recipes')}>
                     {onRecipes ? (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/recipiesIconSelected.png")}
                                 style={styles.icon}
@@ -123,7 +123,7 @@ const MenuBar = () => {
                             </Text>
                         </View>
                     ) : (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/recipiesIcon.png")}
                                 style={styles.icon}
@@ -136,7 +136,7 @@ const MenuBar = () => {
                 </Pressable>
                 <Pressable onPress={() => router.push('/contact')}>
                     {onContact ? (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/contactIconSelected.png")}
                                 style={styles.icon}
@@ -146,7 +146,7 @@ const MenuBar = () => {
                             </Text>
                         </View>
                     ) : (
-                        <View style={styles.buttonContainer}>
+                        <View style = {styles.iconAndText}>
                             <Image
                                 source={require("../assets/MenuBar/contactIcon.png")}
                                 style={styles.icon}
@@ -194,14 +194,7 @@ const styles = StyleSheet.create({
         width: 28,
         height: 28,
         flexDirection: 'column',
-        //resizeMode: 'contain',
-        //alignItems: 'center',
         justifyContent: 'center',
-    },
-    iconButton: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
     },
     menuText: {
         color: '#00274C',
@@ -221,6 +214,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    iconAndText: {
+        flexDirection: 'column', // Stack the icon and text vertically
+        alignItems: 'center',    // Center horizontally
+        justifyContent: 'center', // Center vertically
+    }
 });
 
 export default MenuBar;
