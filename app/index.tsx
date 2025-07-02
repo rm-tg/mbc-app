@@ -67,7 +67,7 @@ export default function HomeScreen() {
       <ScrollView
         style={styles.mainContainer}
         contentContainerStyle={{ alignItems: 'center', paddingBottom: 100, }} // Add this line
-        // padding needed for menun bar
+        // padding needed for menu bar
       > 
         <Banner />
         <Text style={styles.welcomeText}>

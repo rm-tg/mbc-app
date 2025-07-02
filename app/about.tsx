@@ -1,16 +1,25 @@
+import MenuBar from '@/components/MenuBar';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Banner from '../components/Banner';
 
 export default function AboutScreen() {
 
   return (
-      <View style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
+      <ScrollView
+      style={styles.mainContainer}
+      contentContainerStyle={{ alignItems: 'center', paddingBottom: 100, }}
+      >
         <Banner/>
-          <Text style={styles.welcomeText}>
-              this is about screen
-          </Text>
+        <Text style={styles.welcomeText}>
+            this is about screen
+        </Text>
+      </ScrollView>
+      <View>
+        <MenuBar/>
       </View>
+    </View>
   );
 }
 
@@ -18,7 +27,6 @@ const styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
     },
     welcomeText: {
       color: "black", 

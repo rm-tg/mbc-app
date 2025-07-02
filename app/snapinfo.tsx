@@ -1,51 +1,59 @@
+import MenuBar from '@/components/MenuBar';
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Banner from '../components/Banner';
 
 function SnapInfoScreen() {
 
   return (
     <View style={styles.mainContainer}>
-      <Banner />
-      <Text style={styles.snapInfoText}>
-        Michigan Food Assistance Program (FAP)
-      </Text>
+      <ScrollView
+        style={styles.mainContainer}
+        contentContainerStyle={{ alignItems: 'center', paddingBottom: 100, }}
+      >
+        <Banner />
+        <Text style={styles.snapInfoText}>
+          Michigan Food Assistance Program (FAP)
+        </Text>
 
-      <View style={styles.subContainer}>
-        <Text style={styles.subContainerTitle}>
-          ELIGIBILITY
-        </Text>
-        <Text style={styles.subContainerText}>
-          Eligibility for FAP is based on your household size and monthly income.
-        </Text>
-        <Text style={[styles.subContainerText, { textDecorationLine: 'underline' }]}>
-          Learn More About FAP Eligibility
-        </Text>
-      </View>
+        <View style={styles.subContainer}>
+          <Text style={styles.subContainerTitle}>
+            ELIGIBILITY
+          </Text>
+          <Text style={styles.subContainerText}>
+            Eligibility for FAP is based on your household size and monthly income.
+          </Text>
+          <Text style={[styles.subContainerText, { textDecorationLine: 'underline' }]}>
+            Learn More About FAP Eligibility
+          </Text>
+        </View>
 
-      <View style={styles.subContainer}>
-        <Text style={styles.subContainerTitle}>
-          WHERE TO APPLY
-        </Text>
-        <Text style={styles.subContainerText}>
-          To apply for FAP, you can submit an application to MDHHS. The fastest way to apply is online through the MDHHS website, MI Bridges. You can also apply in person at your local MDHHS office.
-        </Text>
-      </View>
+        <View style={styles.subContainer}>
+          <Text style={styles.subContainerTitle}>
+            WHERE TO APPLY
+          </Text>
+          <Text style={styles.subContainerText}>
+            To apply for FAP, you can submit an application to MDHHS. The fastest way to apply is online through the MDHHS website, MI Bridges. You can also apply in person at your local MDHHS office.
+          </Text>
+        </View>
 
-      <View style={styles.applyTitleContainer}>
-        <Text style={[styles.subContainerTitle, { marginTop: 16 }]}>
-          NEED ASSISTANCE?
-        </Text>
+        <View style={styles.applyTitleContainer}>
+          <Text style={[styles.subContainerTitle, { marginTop: 16 }]}>
+            NEED ASSISTANCE?
+          </Text>
+        </View>
+        <View style={styles.applyTextContainer}>
+          <Text style={styles.applyText}>
+            We’re here to help! Contact us to schedule an appointment for assistance applying for FAP.
+          </Text>
+          <TouchableOpacity onPress={() => console.log('Learn More pressed')}>
+            <Text style={styles.learnMore}>Contact Us</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+      <View>
+          <MenuBar/>
       </View>
-      <View style={styles.applyTextContainer}>
-        <Text style={styles.applyText}>
-          We’re here to help! Contact us to schedule an appointment for assistance applying for FAP.
-        </Text>
-        <TouchableOpacity onPress={() => console.log('Learn More pressed')}>
-          <Text style={styles.learnMore}>Contact Us</Text>
-        </TouchableOpacity>
-      </View>
-
     </View>
   );
 }
@@ -54,7 +62,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
   },
   snapInfoText: {
     color: "#00274C",

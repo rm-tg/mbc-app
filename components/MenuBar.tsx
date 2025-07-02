@@ -3,10 +3,33 @@ import { useRouter } from 'expo-router';
 import * as React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
+/*Usage:
+
+Add
+`
+<View>
+    <MenuBar/>
+</View>
+`
+Below a page's scrollview
+And add padding to the scrollview's style like so:
+
+`
+<ScrollView
+    style={styles.mainContainer}
+    contentContainerStyle={{ alignItems: 'center', paddingBottom: 100, }}
+>
+`
+*/
+
+
 const router = useRouter();
 
 const MenuBar = () => {
     const route = useRoute();
+
+    // Use Figma mockup to determine what bar icon
+    // should be highlighted on each page.
 
     var onIndex = false;
     var onSchedule = false;
@@ -15,11 +38,14 @@ const MenuBar = () => {
     var onContact = false;
 
     switch(route.name){
-        case 'index': {
+        case 'index': 
+        case 'about':
+        case 'snapinfo': {
             onIndex = true;
             break;
         }
-        case 'appointments': {
+        case 'appointments':
+        case 'volunteering':{
             onSchedule = true;
             break;
         }
