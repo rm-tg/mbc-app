@@ -1,3 +1,4 @@
+import MenuBar from '@/components/MenuBar';
 import { API, graphqlOperation } from 'aws-amplify';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
@@ -65,7 +66,8 @@ export default function HomeScreen() {
       />
       <ScrollView
         style={styles.mainContainer}
-        contentContainerStyle={{ alignItems: 'center' }} // Add this line
+        contentContainerStyle={{ alignItems: 'center', paddingBottom: 100, }} // Add this line
+        // padding needed for menu bar
       > 
         <Banner />
         <Text style={styles.welcomeText}>
@@ -146,6 +148,9 @@ export default function HomeScreen() {
         <Button title="Enable Notifications" onPress={registerForPushNotificationsAsync} />
         {expoPushToken ? <Text style={{marginBottom: 20, marginLeft: 30}}>Your Push Token: {expoPushToken}</Text> : null}
       </ScrollView>
+      <View>
+        <MenuBar/>
+      </View>
     </View>
   );
 }
