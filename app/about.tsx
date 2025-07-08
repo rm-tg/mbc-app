@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Banner from '../components/Banner';
 
 export default function AboutScreen() {
-
+  const router = useRouter();
   return (
     <View style={styles.mainContainer}>
       <ScrollView
