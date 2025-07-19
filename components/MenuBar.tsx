@@ -1,5 +1,4 @@
-import { useRoute } from '@react-navigation/native';
-import { useRouter } from 'expo-router';
+import { useRouter, useSegments } from 'expo-router';
 import * as React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -23,21 +22,23 @@ And add padding to the scrollview's style like so:
 */
 
 
-const router = useRouter();
+
 
 const MenuBar = () => {
-    const route = useRoute();
+    const router = useRouter();
+    const segments = useSegments(); 
 
     // Use Figma mockup to determine what bar icon
     // should be highlighted on each page.
+    const currentRoute = segments[segments.length - 1] || 'index';
 
-    var onIndex = false;
-    var onSchedule = false;
-    var onFAQ = false;
-    var onRecipes = false;
-    var onContact = false;
+    let onIndex = false;
+    let onSchedule = false;
+    let onFAQ = false;
+    let onRecipes = false;
+    let onContact = false;
 
-    switch(route.name){
+    switch(currentRoute){
         case 'index': 
         case 'about':
         case 'snapinfo': {
