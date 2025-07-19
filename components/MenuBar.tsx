@@ -66,7 +66,7 @@ const MenuBar = () => {
     return (
         <View style={styles.menuBarContainer}>
             <View style={styles.iconContainer}>    
-                <Pressable onPress={() => router.push('/')}>
+                <Pressable onPress={() => router.navigate('/')}>
                     {onIndex ? (
                         <View style = {styles.iconAndText}>
                             <Image
@@ -91,7 +91,7 @@ const MenuBar = () => {
                     
                 </Pressable>
                 
-                <Pressable onPress={() => router.push('/appointments')}>
+                <Pressable onPress={() => router.navigate('/appointments')}>
                     {onSchedule ? (
                         <View style = {styles.iconAndText}>
                             <Image
@@ -114,7 +114,7 @@ const MenuBar = () => {
                         </View>
                     )}
                 </Pressable>
-                <Pressable onPress={() => router.push('/faq')}>
+                <Pressable onPress={() => router.navigate('/faq')}>
                     {onFAQ ? (
                         <View style = {styles.iconAndText}>
                             <Image
@@ -137,7 +137,7 @@ const MenuBar = () => {
                         </View>
                     )}
                 </Pressable>
-                <Pressable onPress={() => router.push('/recipes')}>
+                <Pressable onPress={() => router.navigate('/recipes')}>
                     {onRecipes ? (
                         <View style = {styles.iconAndText}>
                             <Image
@@ -160,7 +160,7 @@ const MenuBar = () => {
                         </View>
                     )}
                 </Pressable>
-                <Pressable onPress={() => router.push('/contact')}>
+                <Pressable onPress={() => router.navigate('/contact')}>
                     {onContact ? (
                         <View style = {styles.iconAndText}>
                             <Image
