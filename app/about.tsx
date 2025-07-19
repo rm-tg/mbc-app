@@ -11,7 +11,7 @@ export default function AboutScreen() {
       <ScrollView>
         <Banner />
         <View style={styles.headerRow}>
-          <TouchableOpacity style={styles.homeButton} onPress={() => router.push('/')}>
+          <TouchableOpacity style={styles.homeButton} onPress={() => router.dismiss()}>
             <Image
               source={require('../assets/about/back-arrow.png')}
               style={styles.arrowImg}
