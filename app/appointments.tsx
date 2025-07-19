@@ -99,7 +99,7 @@ function AppointmentsScreen() {
         <Text style={{ ...styles.mainText, color: '#781313', marginTop: 23 }}>
           Contact us if you need ramp or elevator access.
         </Text>
-        <TouchableOpacity onPress={() => router.push('/contactus')}>
+        <TouchableOpacity onPress={() => router.navigate('/contactus')}>
           <Image
             style={styles.contact_us_button}
             source={require('../assets/contact-us-button.png')}

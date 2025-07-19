@@ -62,7 +62,7 @@ export default function HomeScreen() {
           backgroundColor: 'rgba(0,0,0,0.01)',
           zIndex: 10, // ensure it's on top
         }}
-        onPress={() => router.push('/signin')}
+        onPress={() => router.navigate('/signin')}
       />
       <ScrollView
         style={styles.mainContainer}
@@ -82,7 +82,7 @@ export default function HomeScreen() {
         {/* Schedule Visit button */}
         <TouchableOpacity
           style={styles.scheduleButton}
-          onPress={() => router.push('/appointments')}
+          onPress={() => router.navigate('/appointments')}
           activeOpacity={0.7}
         >
           <Text style={styles.scheduleButtonText}>Schedule Visit</Text>
@@ -94,7 +94,7 @@ export default function HomeScreen() {
           <View style={styles.menuRow}>
             <TouchableOpacity
               style={styles.menuItem}
-              onPress={() => router.push('/about')}
+              onPress={() => router.navigate('/about')}
               activeOpacity={0.7}
             >
               <Image
@@ -106,7 +106,7 @@ export default function HomeScreen() {
             
             <TouchableOpacity
               style={styles.menuItem}
-              onPress={() => router.push('/volunteering')}
+              onPress={() => router.navigate('/volunteering')}
               activeOpacity={0.7}
             >
               <Image
@@ -121,7 +121,7 @@ export default function HomeScreen() {
           <View style={styles.menuRow}>
             <TouchableOpacity
               style={styles.menuItem}
-              onPress={() => router.push('/recipes')}
+              onPress={() => router.navigate('/recipes')}
               activeOpacity={0.7}
             >
               <Image
@@ -133,7 +133,7 @@ export default function HomeScreen() {
             
             <TouchableOpacity
               style={styles.menuItem}
-              onPress={() => router.push('/snapinfo')}
+              onPress={() => router.navigate('/snapinfo')}
               activeOpacity={0.7}
             >
               <Image

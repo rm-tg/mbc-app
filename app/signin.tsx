@@ -97,12 +97,12 @@ function SignInScreen() {
                     <Text style={styles.optionsText}>Operations</Text>
                     <Button
                         title="Send Notification"
-                        onPress={() => router.push('/pushnotification')}
+                        onPress={() => router.navigate('/pushnotification')}
                         color="#00274C"
                     />
                     <Button
                         title="Upload Recipe"
-                        onPress={() => router.push('/uploadimage')}
+                        onPress={() => router.navigate('/uploadimage')}
                         color="#00274C"
                     />
                 </View>
