@@ -80,11 +80,14 @@ function AppointmentsScreen() {
         <Text style={styles.subTitle}>
           Location
         </Text>
-        <Image
+        <TouchableOpacity 
+          style={{ alignItems: 'center', width: '100%' }}
+          onPress={() => handlePress('https://www.google.com/maps/place/Betsy+Barbour+Residence,+420+S+State+St,+Ann+Arbor,+MI+48109/@42.2772944,-83.7437539,17z/data=!3m1!4b1!4m5!3m4!1s0x883cae38ac94a547:0xf8a4be6e818a1f4!8m2!3d42.2772944!4d-83.7415652')}
+        >
+          <Image
           style={{ ...styles.image, aspectRatio: 326 / 182 }}
           source={require('../assets/location-map.png')}
-        />
-        <TouchableOpacity onPress={() => handlePress('https://www.google.com/maps/place/Betsy+Barbour+Residence,+420+S+State+St,+Ann+Arbor,+MI+48109/@42.2772944,-83.7437539,17z/data=!3m1!4b1!4m5!3m4!1s0x883cae38ac94a547:0xf8a4be6e818a1f4!8m2!3d42.2772944!4d-83.7415652')}>
+          />
           <Text style={styles.locationLink}>
             420 S State St{'\n'}
             Ann Arbor, MI 48109
