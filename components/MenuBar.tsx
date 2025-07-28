@@ -28,41 +28,35 @@ const MenuBar = () => {
     const router = useRouter();
     const segments = useSegments(); 
 
-    // Use Figma mockup to determine what bar icon
-    // should be highlighted on each page.
-    const currentRoute = segments[segments.length - 1] || 'index';
+    const routeMapping = {
+        index: ['', 'about', 'snapinfo'], // empty string for index route
+        schedule: ['appointments', 'howtohelp'],
+        faq: ['faq'],
+        recipes: ['recipes'],
+        contact: ['contact']
+    };
 
-    let onIndex = false;
-    let onSchedule = false;
-    let onFAQ = false;
-    let onRecipes = false;
-    let onContact = false;
+    // Get current route
+    const currentRoute = segments.length === 0 ? '' : segments[segments.length - 1];
 
-    switch(currentRoute){
-        case 'index': 
-        case 'about':
-        case 'snapinfo': {
-            onIndex = true;
-            break;
+    // Determine which menu item should be highlighted
+    const getActiveMenuItem = () => {
+        for (const [menuItem, routes] of Object.entries(routeMapping)) {
+            if (routes.includes(currentRoute)) {
+                return menuItem;
+            }
         }
-        case 'appointments':
-        case 'volunteering':{
-            onSchedule = true;
-            break;
-        }
-        case 'faq': {
-            onFAQ = true;
-            break;
-        }
-        case 'recipes': {
-            onRecipes = true;
-            break;
-        }
-        case 'contact': {
-            onContact = true;
-            break;
-        }
-    }       
+        return 'index'; // Default fallback
+    };
+
+    const activeMenuItem = getActiveMenuItem();
+
+    // Set boolean flags
+    const onIndex = activeMenuItem === 'index';
+    const onSchedule = activeMenuItem === 'schedule';
+    const onFAQ = activeMenuItem === 'faq';
+    const onRecipes = activeMenuItem === 'recipes';
+    const onContact = activeMenuItem === 'contact';
 
     return (
         <View style={styles.menuBarContainer}>

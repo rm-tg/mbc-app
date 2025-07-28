@@ -106,7 +106,7 @@ export default function HomeScreen() {
             
             <TouchableOpacity
               style={styles.menuItem}
-              onPress={() => router.navigate('/volunteering')}
+              onPress={() => router.navigate('/howtohelp')}
               activeOpacity={0.7}
             >
               <Image

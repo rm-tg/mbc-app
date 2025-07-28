@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Banner from '../components/Banner';
 
-function VolunteeringScreen() {
+function HowToHelpScreen() {
 
 return (
     <View style={styles.mainContainer}>
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default VolunteeringScreen
+export default HowToHelpScreen
