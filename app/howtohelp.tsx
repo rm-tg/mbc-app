@@ -1,32 +1,75 @@
-import MenuBar from '@/components/MenuBar';
+import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Banner from '../components/Banner';
+import HomeButton from '../components/HomeButton';
 
 function HowToHelpScreen() {
+  const router = useRouter();
 
-return (
-    <View style={styles.mainContainer}>
-      <ScrollView
-      style={styles.mainContainer}
-      contentContainerStyle={{ alignItems: 'center', paddingBottom: 100, }}
-      >
-        <Banner/>
-        <Text style={styles.welcomeText}>
-            this is volunteering screen
-        </Text>
-      </ScrollView>
-      <View>
-          <MenuBar/>
+  return (
+      <View style={styles.mainContainer}>
+        <ScrollView style={styles.mainContainer} >
+          <Banner/>
+          <HomeButton/>
+          <View style={styles.content}>
+            <Text style={styles.heading}>
+              How to Help
+            </Text>
+            <Text style={styles.bodyText}>
+              {'\n'}
+              Thank you for supporting our mission to
+              ensure that no one goes without at U-M. 
+            </Text>
+            <View style={styles.howToHelpMainButton}>
+              <Text style={styles.buttonTextLeft}>
+                {'\n'}
+                VOLUNTEER AT PANTRY
+              </Text>
+              <View style={{flexDirection: 'row', alignItems: 'center',
+                paddingBottom: 5.5, paddingTop: 9.5,}}>
+                <View style={{flex: 1, height: 1, backgroundColor: '#00274C',}}/>
+              </View>
+              <View style={{flexDirection: 'row',}}/>
+                <Text style={styles.bodyTextLeftAlign}>
+                  Interested in being a volunteer?
+                  Anyone can help, no experience is
+                  necessary, and you can sign up for a
+                  shift that works with your schedule.
+                </Text>
+                <TouchableOpacity style={styles.homeButton} onPress={() => router.navigate('/about')}>
+                  <Image
+                      source={require('../assets/howToHelp/right-arrow.png')}
+                      style={styles.rightArrowImg}
+                      resizeMode="contain"
+                  />
+                </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
       </View>
-    </View>
-);
+  );
 }
 
 const styles = StyleSheet.create({
     mainContainer: {
       flex: 1,
       backgroundColor: '#fff',
+    },
+    content: {
+      alignItems: 'center',
+      paddingBottom: 80,
+    },
+    headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 22,
+    marginLeft: 8,
+    marginBottom: 21,
+    },
+    homeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
     },
     welcomeText: {
       color: "black", 
@@ -62,7 +105,55 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       alignItems: 'center', // Center horizontally
       justifyContent: 'center'
-    }
+    },
+    heading: {
+      fontSize: 24,
+      fontFamily: "Montserrat_700Bold",
+      color: '#00274C',
+      textAlign: 'center',
+    },
+    sectionTitle: {
+      fontSize: 16,
+      fontFamily: "Montserrat_700Bold",
+      color: '#00274C',
+      marginTop: 28,
+      marginBottom: 11,
+    },
+    bodyText: {
+      fontSize: 16,
+      fontFamily: "Montserrat_500Regular",
+      color: '#000000',
+      width: '91.03%',
+      textAlign: 'center',
+    },
+    bodyTextLeftAlign: {
+      fontSize: 16,
+      fontFamily: "Montserrat_500Medium",
+      color: '#000000',
+      width: '91.03%',
+      textAlign: 'left',
+    },
+    howToHelpMainButton: {
+      backgroundColor: '#F2F2F2',
+      top: 27,
+      borderRadius: 25,
+      paddingVertical: 10,
+      paddingHorizontal: '5.13%',
+      marginBottom: 14,
+      width: '93.85%',
+      height: 170,
+      flexDirection: 'column',
+    },
+    buttonTextLeft: {
+      fontSize: 16,
+      fontFamily: "Montserrat_700Bold",
+      color: '#00274C',
+      textAlign: 'left',
+    },
+      rightArrowImg: {
+      width: 24,
+      height: 24,
+    },
   });
 
 export default HowToHelpScreen
