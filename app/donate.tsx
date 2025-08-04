@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Image, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import BackButton from '../components/BackButton';
 import Banner from '../components/Banner';
 import ContactUs from '../components/contactUs';
@@ -42,15 +42,74 @@ function DonateScreen() {
                 own donation path to make an impact on-
                 campus for UM community members in need.
             </Text>
-            <View>
-
+            <View style={styles.donateBox}>
+                <Text style={styles.donateText}>
+                  Deborah and Steve Rosenthal Family Fund
+                </Text>
+                <TouchableOpacity style={styles.donateButton}
+                  onPress={() => Linking.openURL('https://giving.umich.edu/basket/fund/702021')}>
+                  <Text style={styles.donateButtonText}>
+                    Donate
+                  </Text>
+                </TouchableOpacity>
             </View>
+            <View style={styles.donateBox}>
+                <Text style={styles.donateText}>
+                  Maize and Blue Cupboard Endowment Fund
+                </Text>
+                <TouchableOpacity style={styles.donateButton}
+                  onPress={() => Linking.openURL('https://giving.umich.edu/basket/fund/732740')}>
+                  <Text style={styles.donateButtonText}>
+                    Donate
+                  </Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.donateBox}>
+                <Text style={styles.donateText}>
+                  Maize and Blue Cupboard Fund
+                </Text>
+                <TouchableOpacity style={styles.donateButton}
+                  onPress={() => Linking.openURL('https://giving.umich.edu/basket/fund/333660')}>
+                  <Text style={styles.donateButtonText}>
+                    Donate
+                  </Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.donateBox}>
+                <Text style={styles.donateText}>
+                  Strong Enough for All Fund
+                </Text>
+                <TouchableOpacity style={styles.donateButton}
+                  onPress={() => Linking.openURL('https://giving.umich.edu/basket/fund/702083')}>
+                  <Text style={styles.donateButtonText}>
+                    Donate
+                  </Text>
+                </TouchableOpacity>
+            </View>
+            <Text style={styles.subHeading}>
+              Donate Goods
+            </Text>
+            <Text style={styles.bodyTextThird}>
+                {'\n'}
+                We accept food, kitchenware, and
+                personal care items!
+                {'\n'}
+                {'\n'}
+                For more information on the items that we
+                accept and tips for donating, view our list
+                here: 
+                <Text style={styles.hyperlink} onPress={() =>
+                    Linking.openURL('https://mbc.studentlife.umich.edu/how-to-help/#money')}>
+                    {' '}
+                    https://mbc.studentlife.umich.edu/how-to-help/#money
+                </Text>
+            </Text>
             <Text style={styles.bottomParagraph}>
               The Maize and Blue Cupboard utilizes volunteers
               on a regular basis. If your group is interested in
               volunteering at the Cupboard, please contact us
               at 
-                <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
+                <Text style={styles.hyperlink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
                   {' '}
                   maize.blue.cupboard@umich.edu
                 </Text>
@@ -75,10 +134,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingBottom: 105,
     },
-    signUpButton: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
     image: {
       width: "100%",
       height: "100%",
@@ -97,45 +152,13 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       paddingTop: 35,
     },
-    boxHeading: {
-      fontSize: 16,
-      fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      textAlign: 'left',
-    },
-    boxSubHeading: {
-      fontSize: 14,
-      fontFamily: "Montserrat_600SemiBold",
-      color: '#515050',
-      paddingTop: 6,
-    },
-    boxBodyText: {
-      fontSize: 12,
-      fontFamily: "Montserrat_500Medium",
-      color: '#000000',
-      paddingTop: 13,
-      paddingRight: 27,
-    },
-    sectionTitle: {
-      fontSize: 16,
-      fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      marginTop: 28,
-      marginBottom: 11,
-    },
-    buttonTextLeft: {
-      fontSize: 16,
-      fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      textAlign: 'left',
-      paddingTop: 7
-    },
     bodyTextFirst: {
       fontSize: 14,
       fontFamily: "Montserrat_400Regular",
       color: '#000000',
       textAlign: 'center',
       paddingHorizontal: 60,
+      lineHeight: 19.6
     },
     bodyTextSecond: {
       fontSize: 14,
@@ -143,24 +166,16 @@ const styles = StyleSheet.create({
       color: '#000000',
       textAlign: 'center',
       paddingHorizontal: 40,
+      paddingBottom: 32,
+      lineHeight: 19.6
     },
-    bodyTextLeftAlign: {
-      fontSize: 13,
-      fontFamily: "Montserrat_500Medium",
+    bodyTextThird: {
+      fontSize: 14,
+      fontFamily: "Montserrat_400Regular",
       color: '#000000',
-      width: '91.03%',
-      textAlign: 'left',
-      paddingRight: 20
-    },
-    rightArrowImg: {
-      width: 18,
-      height: 18,
-    },
-    signUpText: {
-      color: '#FFFFFF',
-      fontFamily: "Montserrat_600SemiBold",
-      textAlign: 'left',
-      fontSize: 16,
+      textAlign: 'center',
+      paddingHorizontal: 60,
+      lineHeight: 19.6
     },
     bottomParagraph: {
       textAlign: 'center',
@@ -170,7 +185,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 43,
       paddingBottom: 20,
     },
-    mailLink: {
+    hyperlink: {
       textAlign: 'center',
       fontSize: 13,
       fontFamily: "Montserrat_500Medium",
@@ -186,15 +201,14 @@ const styles = StyleSheet.create({
       marginTop: 35,
       resizeMode: "contain",
     },
-    volunteerBox: {
-      backgroundColor: '#FFFFFF',
+    donateBox: {
+      backgroundColor: '#00274C',
       top: 19,
-      borderRadius: 12,
-      paddingVertical: 16,
-      paddingHorizontal: 16,
+      borderRadius: 18,
+      paddingVertical: 9,
       marginBottom: 14,
-      width: 331,
-      height: 144,
+      width: 350,
+      height: 75,
       flexDirection: 'column',
       // Drop shadow
       shadowColor: "#000000",
@@ -206,18 +220,24 @@ const styles = StyleSheet.create({
       shadowRadius: 2,     // 4px blur
       elevation: 2,        // Android equivalent
     },
-    signUpBox: {
-      backgroundColor: '#00274C',
+    donateText: {
+      textAlign: 'center',
+      fontSize: 14,
+      fontFamily: "Montserrat_700Bold",
+      color:'#FFFFFF'
+    },
+    donateButton: {
+      backgroundColor: '#FFCB05',
       top: 10,
-      borderRadius: 12,
-      paddingVertical: 16,
-      paddingHorizontal: 16,
-      marginBottom: 14,
-      width: 331,
-      height: 56,
-      flexDirection: 'row',
+      borderRadius: 11,
+      width: 112,
+      height: 30,
+      flexDirection: 'column',
+      alignSelf: 'center',
+
+      justifyContent: 'center',
       alignItems: 'center',
-      justifyContent: 'space-between',
+
       // Drop shadow
       shadowColor: "#000000",
       shadowOffset: {
@@ -227,6 +247,12 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.25,  // 30% opacity
       shadowRadius: 2,     // 4px blur
       elevation: 2,        // Android equivalent
+    },
+    donateButtonText: {
+      textAlign: 'center',
+      fontSize: 14,
+      fontFamily: "Montserrat_600SemiBold",
+      color:'#00274C'
     },
   });
 

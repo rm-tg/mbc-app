@@ -148,34 +148,12 @@ const styles = StyleSheet.create({
       paddingTop: 13,
       paddingRight: 27,
     },
-    sectionTitle: {
-      fontSize: 16,
-      fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      marginTop: 28,
-      marginBottom: 11,
-    },
-    buttonTextLeft: {
-      fontSize: 16,
-      fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      textAlign: 'left',
-      paddingTop: 7
-    },
     bodyText: {
       fontSize: 14,
       fontFamily: "Montserrat_400Regular",
       color: '#000000',
       paddingHorizontal: 55,
       textAlign: 'center',
-    },
-    bodyTextLeftAlign: {
-      fontSize: 13,
-      fontFamily: "Montserrat_500Medium",
-      color: '#000000',
-      width: '91.03%',
-      textAlign: 'left',
-      paddingRight: 20
     },
     rightArrowImg: {
       width: 18,

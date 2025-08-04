@@ -156,7 +156,8 @@ const styles = StyleSheet.create({
       color: '#000000',
       width: '91.03%',
       textAlign: 'left',
-      paddingRight: 20
+      paddingRight: 20,
+      paddingTop: 5,
     },
     bottomParagraph: {
       textAlign: 'center',
