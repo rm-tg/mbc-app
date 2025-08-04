@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import * as React from 'react';
 import { FlatList, Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Banner from '../components/Banner';
+import ContactUs from '../components/contactUs';
 
 function AppointmentsScreen() {
   const router = useRouter();
@@ -102,12 +103,7 @@ function AppointmentsScreen() {
         <Text style={{ ...styles.mainText, color: '#781313', marginTop: 23 }}>
           Contact us if you need ramp or elevator access.
         </Text>
-        <TouchableOpacity onPress={() => router.navigate('/contactus')}>
-          <Image
-            style={styles.contact_us_button}
-            source={require('../assets/contact-us-button.png')}
-          />
-        </TouchableOpacity>
+        <ContactUs/>
         <Image
           style={styles.mbcSignature}
           source={require('../assets/mbc-signature-horizontal.png')}
@@ -189,13 +185,6 @@ const styles = StyleSheet.create({
     width: '84.6%',
     marginTop: 14,
     marginBottom: 5,
-  },
-  contact_us_button: {
-    width: '31%',
-    height: undefined,
-    aspectRatio: 121 / 25,
-    marginTop: 17,
-    resizeMode: "contain",
   },
   mbcSignature: {
     width: '54.1%',

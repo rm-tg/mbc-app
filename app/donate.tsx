@@ -1,11 +1,11 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { Image, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 import BackButton from '../components/BackButton';
 import Banner from '../components/Banner';
 import ContactUs from '../components/contactUs';
 
-function VolunteerScreen() {
+function DonateScreen() {
   const router = useRouter();
 
   return (
@@ -15,68 +15,36 @@ function VolunteerScreen() {
           <BackButton/>
           <View style={styles.content}>
             <Text style={styles.heading}>
-              Volunteer
+              Donate
             </Text>
-            <Text style={styles.bodyText}>
+            <Text style={styles.bodyTextFirst}>
               {'\n'}
-              Interested in being a volunteer? Anyone
-              can help, no experience is necessary, and
-              you can sign up for a shift that works with
-              your schedule.
+              Interested in donating money and/or
+              goods to the pantry? See how your
+              donations can make an impact. 
             </Text>
             <Text style={styles.subHeading}>
-              Volunteer Opportunities
+              Donate to a Fund
             </Text>
-            <View style={styles.volunteerBox}>
-              <Text style={styles.boxHeading}>
-                Volunteer at Maize and Blue
-              </Text>
-              <Text style={styles.boxSubHeading}>
-                420 State Street
-              </Text>
-              <Text style={styles.boxBodyText}>
-                Lorem ipsum dolor sit amet consecte. Nunc in
-                et orci mauris habitant nisl amet ornare.
-                Dictum convallis at lacus.
-              </Text>
+            <Text style={styles.bodyTextSecond}>
+                {'\n'}
+                Did you know that when you donate money,
+                your dollar goes ten times further to help a
+                student in need? That's because we use
+                monetary donations to purchase discounted
+                food from a community food bank. Any
+                amount can make a difference in a student's
+                life. Please note that all monetary donations
+                must be made online.
+                {'\n'}
+                {'\n'}
+                There are four options for giving. Choose your
+                own donation path to make an impact on-
+                campus for UM community members in need.
+            </Text>
+            <View>
+
             </View>
-            <TouchableOpacity style={styles.signUpButton} onPress={() => router.navigate('/about')}>
-              <View style={styles.signUpBox}>
-                <Text style={styles.signUpText}>
-                  Sign up
-                </Text>
-                <Image
-                  source={require('../assets/howToHelp/right-arrow.png')}
-                  style={styles.rightArrowImg}
-                  resizeMode="contain" 
-                />
-              </View>
-            </TouchableOpacity>
-            <View style={styles.volunteerBox}>
-              <Text style={styles.boxHeading}>
-                Volunteer at North Campus
-              </Text>
-              <Text style={styles.boxSubHeading}>
-                Connector Hallway
-              </Text>
-              <Text style={styles.boxBodyText}>
-                Lorem ipsum dolor sit amet consecte. Nunc in
-                et orci mauris habitant nisl amet ornare.
-                Dictum convallis at lacus.
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.signUpButton} onPress={() => router.navigate('/about')}>
-              <View style={styles.signUpBox}>
-                <Text style={styles.signUpText}>
-                  Sign up
-                </Text>
-                <Image
-                  source={require('../assets/howToHelp/right-arrow.png')}
-                  style={styles.rightArrowImg}
-                  resizeMode="contain" 
-                />
-              </View>
-            </TouchableOpacity>
             <Text style={styles.bottomParagraph}>
               The Maize and Blue Cupboard utilizes volunteers
               on a regular basis. If your group is interested in
@@ -162,12 +130,19 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       paddingTop: 7
     },
-    bodyText: {
+    bodyTextFirst: {
       fontSize: 14,
       fontFamily: "Montserrat_400Regular",
       color: '#000000',
-      paddingHorizontal: 55,
       textAlign: 'center',
+      paddingHorizontal: 60,
+    },
+    bodyTextSecond: {
+      fontSize: 14,
+      fontFamily: "Montserrat_400Regular",
+      color: '#000000',
+      textAlign: 'center',
+      paddingHorizontal: 40,
     },
     bodyTextLeftAlign: {
       fontSize: 13,
@@ -255,4 +230,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default VolunteerScreen;
+export default DonateScreen;

@@ -60,7 +60,7 @@ export default function AboutScreen() {
               experts like CAPS, Dean of{'\n'}
               Students and Financial{'\n'}
               Aid, as well as FAP{'\n'}
-              (Michigan’s food program)
+              (Michigan's food program)
             </Text>
           </View>
         </View>

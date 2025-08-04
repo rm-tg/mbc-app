@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Banner from '../components/Banner';
 import HomeButton from '../components/HomeButton';
+import ContactUs from '../components/contactUs';
 
 function HowToHelpScreen() {
   const router = useRouter();
@@ -61,7 +62,7 @@ function HowToHelpScreen() {
                   goods to the pantry? See how your
                   donations can make an impact. 
                 </Text>
-                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/about')}>
+                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/donate')}>
                   <View style={styles.circle}>
                     <Image
                         source={require('../assets/howToHelp/right-arrow.png')}
@@ -107,11 +108,7 @@ function HowToHelpScreen() {
                   maize.blue.cupboard@umich.edu
                 </Text>
             </Text>
-            <TouchableOpacity style={styles.contactButton} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
-                <Text style={styles.contactText}>
-                  Contact Us
-                </Text>
-            </TouchableOpacity>
+            <ContactUs/>
             <Image
               style={styles.mbcSignature}
               source={require('../assets/mbc-signature-horizontal.png')}
@@ -147,10 +144,10 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     bodyText: {
-      fontSize: 16,
-      fontFamily: "Montserrat_500Regular",
+      fontSize: 14,
+      fontFamily: "Montserrat_400Regular",
       color: '#000000',
-      width: '91.03%',
+      paddingHorizontal: 60,
       textAlign: 'center',
     },
     bodyTextLeftAlign: {
@@ -196,11 +193,6 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       paddingTop: 7
     },
-    contactText: {
-      color: '#FFFFFF',
-      fontFamily: "Montserrat_600SemiBold",
-      textAlign: 'center',
-    },
     rightArrowImg: {
       width: 18,
       height: 18,
@@ -212,13 +204,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#00274C', // Optional: Set a background color
       paddingVertical: 2.5,
       paddingHorizontal: 2.5,
-    },
-    contactButton: {
-      backgroundColor: '#00274C',
-      width: 121,
-      height: 25,
-      borderRadius: 4,
-      justifyContent: "center"
     },
     mbcSignature: {
       width: '54.1%',

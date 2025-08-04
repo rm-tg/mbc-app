@@ -1,4 +1,4 @@
-import { Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_700Bold, useFonts } from "@expo-google-fonts/montserrat";
+import { Montserrat_400Regular, Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_700Bold, useFonts } from "@expo-google-fonts/montserrat";
 import { Rubik_300Light } from "@expo-google-fonts/rubik";
 import { Amplify } from "aws-amplify";
 import { Stack } from "expo-router";
@@ -14,6 +14,7 @@ export default function RootLayout() {
     Montserrat_700Bold,
     Montserrat_600SemiBold,
     Rubik_300Light,
+    Montserrat_400Regular,
   });
 
   if (!loaded && !error) {
