@@ -36,7 +36,7 @@ function HowToHelpScreen() {
                   necessary, and you can sign up for a
                   shift that works with your schedule.
                 </Text>
-                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/about')}>
+                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/volunteer')}>
                   <View style={styles.circle}>
                     <Image
                         source={require('../assets/howToHelp/right-arrow.png')}
@@ -131,26 +131,11 @@ const styles = StyleSheet.create({
     },
     content: {
       alignItems: 'center',
-      paddingBottom: 80,
-    },
-    headerRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginTop: 22,
-      marginLeft: 8,
-      marginBottom: 21,
+      paddingBottom: 20,
     },
     nextButton: {
       flexDirection: 'row',
       alignItems: 'center',
-    },
-    welcomeText: {
-      color: "black", 
-      fontFamily: "Avenir Next",
-      fontWeight: "700", 
-      fontSize: 30, 
-      alignSelf: 'flex-start',
-      marginLeft: 30,
     },
     image: {
       width: "100%", // Make the image take full width
@@ -162,13 +147,6 @@ const styles = StyleSheet.create({
       fontFamily: "Montserrat_700Bold",
       color: '#00274C',
       textAlign: 'center',
-    },
-    sectionTitle: {
-      fontSize: 16,
-      fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      marginTop: 28,
-      marginBottom: 11,
     },
     bodyText: {
       fontSize: 16,
@@ -222,9 +200,8 @@ const styles = StyleSheet.create({
     },
     contactText: {
       color: '#FFFFFF',
-      fontFamily: "Montserrat_600",
+      fontFamily: "Montserrat_600SemiBold",
       textAlign: 'center',
-
     },
     rightArrowImg: {
       width: 18,
