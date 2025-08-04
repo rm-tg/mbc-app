@@ -109,7 +109,7 @@ function HowToHelpScreen() {
                   </Text>
               </Text>
             </View>
-            <TouchableOpacity style={styles.contactButton} onPress={() => router.navigate('/about')}>
+            <TouchableOpacity style={styles.contactButton} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
                 <Text style={styles.contactText}>
                   Contact Us
                 </Text>
