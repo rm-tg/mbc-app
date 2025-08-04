@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
 import BackButton from '../components/BackButton';
 import Banner from '../components/Banner';
 
@@ -51,6 +51,50 @@ function VolunteerScreen() {
                 />
               </View>
             </TouchableOpacity>
+            <View style={styles.volunteerBox}>
+              <Text style={styles.boxHeading}>
+                Volunteer at North Campus
+              </Text>
+              <Text style={styles.boxSubHeading}>
+                Connector Hallway
+              </Text>
+              <Text style={styles.boxBodyText}>
+                Lorem ipsum dolor sit amet consecte. Nunc in
+                et orci mauris habitant nisl amet ornare.
+                Dictum convallis at lacus.
+              </Text>
+            </View>
+            <TouchableOpacity style={styles.signUpButton} onPress={() => router.navigate('/about')}>
+              <View style={styles.signUpBox}>
+                <Text style={styles.signUpText}>
+                  Sign up
+                </Text>
+                <Image
+                  source={require('../assets/howToHelp/right-arrow.png')}
+                  style={styles.rightArrowImg}
+                  resizeMode="contain" 
+                />
+              </View>
+            </TouchableOpacity>
+            <Text style={styles.bottomParagraph}>
+              The Maize and Blue Cupboard utilizes volunteers
+              on a regular basis. If your group is interested in
+              volunteering at the Cupboard, please contact us
+              at 
+                <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
+                  {' '}
+                  maize.blue.cupboard@umich.edu
+                </Text>
+            </Text>
+            <TouchableOpacity style={styles.contactButton} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
+                <Text style={styles.contactText}>
+                  Contact Us
+                </Text>
+            </TouchableOpacity>
+            <Image
+              style={styles.mbcSignature}
+              source={require('../assets/mbc-signature-horizontal.png')}
+            />
           </View>
         </ScrollView>
       </View>
@@ -64,7 +108,7 @@ const styles = StyleSheet.create({
     },
     content: {
       alignItems: 'center',
-      paddingBottom: 20,
+      paddingBottom: 105,
     },
     signUpButton: {
       flexDirection: 'row',
@@ -150,6 +194,23 @@ const styles = StyleSheet.create({
       fontFamily: "Montserrat_600SemiBold",
       textAlign: 'left',
       fontSize: 16,
+    },
+    bottomParagraph: {
+      textAlign: 'center',
+      fontSize: 13,
+      fontFamily: "Montserrat_500Medium",
+      paddingTop: 27,
+      paddingHorizontal: 43,
+      paddingBottom: 20,
+    },
+    mailLink: {
+      textAlign: 'center',
+      fontSize: 13,
+      fontFamily: "Montserrat_500Medium",
+      paddingTop: 27,
+      paddingHorizontal: 40,
+      color: 'blue',
+      textDecorationLine: 'underline',
     },
     contactButton: {
       backgroundColor: '#00274C',

@@ -97,18 +97,16 @@ function HowToHelpScreen() {
                 </TouchableOpacity>
               </View>
             </View>
-            <View>
-              <Text style={styles.bottomParagraph}>
-                The Maize and Blue Cupboard utilizes volunteers
-                on a regular basis. If your group is interested in
-                volunteering at the Cupboard, please contact us
-                at 
-                  <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
-                    {' '}
-                    maize.blue.cupboard@umich.edu
-                  </Text>
-              </Text>
-            </View>
+            <Text style={styles.bottomParagraph}>
+              The Maize and Blue Cupboard utilizes volunteers
+              on a regular basis. If your group is interested in
+              volunteering at the Cupboard, please contact us
+              at 
+                <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
+                  {' '}
+                  maize.blue.cupboard@umich.edu
+                </Text>
+            </Text>
             <TouchableOpacity style={styles.contactButton} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
                 <Text style={styles.contactText}>
                   Contact Us
@@ -131,7 +129,7 @@ const styles = StyleSheet.create({
     },
     content: {
       alignItems: 'center',
-      paddingBottom: 20,
+      paddingBottom: 105,
     },
     nextButton: {
       flexDirection: 'row',
