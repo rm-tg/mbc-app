@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 22,
     marginLeft: 8,
-    marginBottom: 21,
+    marginBottom: 3,
   },
   homeButton: {
     flexDirection: 'row',

@@ -23,27 +23,87 @@ function HowToHelpScreen() {
             </Text>
             <View style={styles.howToHelpMainButton}>
               <Text style={styles.buttonTextLeft}>
-                {'\n'}
                 VOLUNTEER AT PANTRY
               </Text>
               <View style={{flexDirection: 'row', alignItems: 'center',
-                paddingBottom: 5.5, paddingTop: 9.5,}}>
+                paddingBottom: 5.5, paddingTop: 9.5, paddingRight: 55}}>
                 <View style={{flex: 1, height: 1, backgroundColor: '#00274C',}}/>
               </View>
-              <View style={{flexDirection: 'row',}}/>
+              <View style={{flexDirection: 'row',}}>
                 <Text style={styles.bodyTextLeftAlign}>
                   Interested in being a volunteer?
                   Anyone can help, no experience is
                   necessary, and you can sign up for a
                   shift that works with your schedule.
                 </Text>
-                <TouchableOpacity style={styles.homeButton} onPress={() => router.navigate('/about')}>
-                  <Image
-                      source={require('../assets/howToHelp/right-arrow.png')}
-                      style={styles.rightArrowImg}
-                      resizeMode="contain"
-                  />
+                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/about')}>
+                  <View style={styles.circle}>
+                    <Image
+                        source={require('../assets/howToHelp/right-arrow.png')}
+                        style={styles.rightArrowImg}
+                        resizeMode="contain"
+                    />
+                  </View>
                 </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.howToHelpMainButton}>
+              <Text style={styles.buttonTextLeft}>
+                DONATE
+              </Text>
+              <View style={{flexDirection: 'row', alignItems: 'center',
+                paddingBottom: 5.5, paddingTop: 9.5, paddingRight: 55}}>
+                <View style={{flex: 1, height: 1, backgroundColor: '#00274C',}}/>
+              </View>
+              <View style={{flexDirection: 'row',}}>
+                <Text style={styles.bodyTextLeftAlign}>
+                  Interested in donating money and/or
+                  goods to the pantry? See how your
+                  donations can make an impact. 
+                </Text>
+                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/about')}>
+                  <View style={styles.circle}>
+                    <Image
+                        source={require('../assets/howToHelp/right-arrow.png')}
+                        style={styles.rightArrowImg}
+                        resizeMode="contain"
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.howToHelpMainButton}>
+              <Text style={styles.buttonTextLeft}>
+                HOST A DRIVE
+              </Text>
+              <View style={{flexDirection: 'row', alignItems: 'center',
+                paddingBottom: 5.5, paddingTop: 9.5, paddingRight: 55}}>
+                <View style={{flex: 1, height: 1, backgroundColor: '#00274C',}}/>
+              </View>
+              <View style={{flexDirection: 'row',}}>
+                <Text style={styles.bodyTextLeftAlign}>
+                  Interested in hosting a donation drive
+                  with a team? Schedule a time and find
+                  out what goods we can accept. 
+                </Text>
+                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/about')}>
+                  <View style={styles.circle}>
+                    <Image
+                        source={require('../assets/howToHelp/right-arrow.png')}
+                        style={styles.rightArrowImg}
+                        resizeMode="contain"
+                    />
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View>
+                <Text style={styles.bottomParagraph}>
+                  The Maize and Blue Cupboard utilizes volunteers
+                  on a regular basis. If your group is interested in
+                  volunteering at the Cupboard, please contact us
+                  at maize.blue.cupboard@umich.edu
+                </Text>
             </View>
           </View>
         </ScrollView>
@@ -61,15 +121,15 @@ const styles = StyleSheet.create({
       paddingBottom: 80,
     },
     headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 22,
-    marginLeft: 8,
-    marginBottom: 21,
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 22,
+      marginLeft: 8,
+      marginBottom: 21,
     },
-    homeButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    nextButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     welcomeText: {
       color: "black", 
@@ -79,32 +139,10 @@ const styles = StyleSheet.create({
       alignSelf: 'flex-start',
       marginLeft: 30,
     },
-    imageContainer: {
-      backgroundColor: '#D9E0F3',
-      width: "90%", 
-      height: "20%", 
-      borderRadius: 20,
-      overflow: 'hidden',
-      padding: 10,
-      marginBottom: 20,
-      alignItems: 'center', // Center horizontally
-      justifyContent: 'center'
-    },
     image: {
       width: "100%", // Make the image take full width
       height: "100%", // Make the image take full height
       resizeMode: "contain",
-    },
-    gridsContainer: {
-      backgroundColor: "White",
-      width: "70%", 
-      height: "12%", 
-      borderColor: "Black",
-      borderWidth: 1,
-      borderRadius: 20,
-      marginBottom: 20,
-      alignItems: 'center', // Center horizontally
-      justifyContent: 'center'
     },
     heading: {
       fontSize: 24,
@@ -127,21 +165,29 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     bodyTextLeftAlign: {
-      fontSize: 16,
+      fontSize: 13,
       fontFamily: "Montserrat_500Medium",
       color: '#000000',
       width: '91.03%',
       textAlign: 'left',
+      paddingRight: 20
+    },
+    bottomParagraph: {
+      textAlign: 'center',
+      fontSize: 12,
+      fontFamily: "Montserrat_500Medium",
+      paddingTop: 27,
+      paddingHorizontal: 40,
     },
     howToHelpMainButton: {
       backgroundColor: '#F2F2F2',
       top: 27,
       borderRadius: 25,
       paddingVertical: 10,
-      paddingHorizontal: '5.13%',
+      paddingHorizontal: 20,
       marginBottom: 14,
-      width: '93.85%',
-      height: 170,
+      width: '85%',
+      height: 135,
       flexDirection: 'column',
     },
     buttonTextLeft: {
@@ -149,10 +195,19 @@ const styles = StyleSheet.create({
       fontFamily: "Montserrat_700Bold",
       color: '#00274C',
       textAlign: 'left',
+      paddingTop: 7
     },
       rightArrowImg: {
-      width: 24,
-      height: 24,
+      width: 18,
+      height: 18,
+    },
+    circle: {
+      width: 23,  // Set a desired width
+      height: 23, // Set height equal to width
+      borderRadius: 11.5, // Half of the width/height
+      backgroundColor: '#00274C', // Optional: Set a background color
+      paddingVertical: 2.5,
+      paddingHorizontal: 2.5,
     },
   });
 
