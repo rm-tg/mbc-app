@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Banner from '../components/Banner';
 import HomeButton from '../components/HomeButton';
 
@@ -98,13 +98,26 @@ function HowToHelpScreen() {
               </View>
             </View>
             <View>
-                <Text style={styles.bottomParagraph}>
-                  The Maize and Blue Cupboard utilizes volunteers
-                  on a regular basis. If your group is interested in
-                  volunteering at the Cupboard, please contact us
-                  at maize.blue.cupboard@umich.edu
-                </Text>
+              <Text style={styles.bottomParagraph}>
+                The Maize and Blue Cupboard utilizes volunteers
+                on a regular basis. If your group is interested in
+                volunteering at the Cupboard, please contact us
+                at 
+                  <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
+                    {' '}
+                    maize.blue.cupboard@umich.edu
+                  </Text>
+              </Text>
             </View>
+            <TouchableOpacity style={styles.contactButton} onPress={() => router.navigate('/about')}>
+                <Text style={styles.contactText}>
+                  Contact Us
+                </Text>
+            </TouchableOpacity>
+            <Image
+              style={styles.mbcSignature}
+              source={require('../assets/mbc-signature-horizontal.png')}
+            />
           </View>
         </ScrollView>
       </View>
@@ -174,10 +187,20 @@ const styles = StyleSheet.create({
     },
     bottomParagraph: {
       textAlign: 'center',
-      fontSize: 12,
+      fontSize: 13,
+      fontFamily: "Montserrat_500Medium",
+      paddingTop: 27,
+      paddingHorizontal: 43,
+      paddingBottom: 20,
+    },
+    mailLink: {
+      textAlign: 'center',
+      fontSize: 13,
       fontFamily: "Montserrat_500Medium",
       paddingTop: 27,
       paddingHorizontal: 40,
+      color: 'blue',
+      textDecorationLine: 'underline',
     },
     howToHelpMainButton: {
       backgroundColor: '#F2F2F2',
@@ -197,7 +220,13 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       paddingTop: 7
     },
-      rightArrowImg: {
+    contactText: {
+      color: '#FFFFFF',
+      fontFamily: "Montserrat_600",
+      textAlign: 'center',
+
+    },
+    rightArrowImg: {
       width: 18,
       height: 18,
     },
@@ -208,6 +237,20 @@ const styles = StyleSheet.create({
       backgroundColor: '#00274C', // Optional: Set a background color
       paddingVertical: 2.5,
       paddingHorizontal: 2.5,
+    },
+    contactButton: {
+      backgroundColor: '#00274C',
+      width: 121,
+      height: 25,
+      borderRadius: 4,
+      justifyContent: "center"
+    },
+    mbcSignature: {
+      width: '54.1%',
+      height: undefined,
+      aspectRatio: 211 / 28,
+      marginTop: 35,
+      resizeMode: "contain",
     },
   });
 
