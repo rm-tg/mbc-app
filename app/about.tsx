@@ -1,25 +1,17 @@
+import HomeButton from '@/components/HomeButton';
 import MenuBar from '@/components/MenuBar';
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Banner from '../components/Banner';
 
 export default function AboutScreen() {
   const router = useRouter();
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff'}}>
+    <View style={styles.mainContainer}>
       <ScrollView>
         <Banner />
-        <View style={styles.headerRow}>
-          <TouchableOpacity style={styles.homeButton} onPress={() => router.dismiss()}>
-            <Image
-              source={require('../assets/about/back-arrow.png')}
-              style={styles.arrowImg}
-              resizeMode="contain"
-            />
-            <Text style={styles.homeText}>HOME</Text>
-          </TouchableOpacity>
-        </View>
+        <HomeButton/>
         <View style={styles.content}>
           <Text style={styles.heading}>About Maize & Blue{'\n'}Cupboard</Text>
           <Text style={styles.sectionTitle}>OUR MISSION</Text>
@@ -68,7 +60,7 @@ export default function AboutScreen() {
               experts like CAPS, Dean of{'\n'}
               Students and Financial{'\n'}
               Aid, as well as FAP{'\n'}
-              (Michigan’s food program)
+              (Michigan's food program)
             </Text>
           </View>
         </View>
@@ -81,6 +73,10 @@ export default function AboutScreen() {
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -105,6 +101,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     paddingBottom: 80,
+    paddingTop:20,
   },
   heading: {
     fontSize: 24,
