@@ -208,7 +208,6 @@ const styles = StyleSheet.create({
     iconContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        //alignItems: 'flex-end',
         width: '90%', // 356/390
     },
     icon: {

@@ -81,9 +81,9 @@ function VolunteerScreen() {
               The Maize and Blue Cupboard utilizes volunteers
               on a regular basis. If your group is interested in
               volunteering at the Cupboard, please contact us
-              at 
+              at{' '}
                 <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
-                  {' '}
+                  
                   maize.blue.cupboard@umich.edu
                 </Text>
             </Text>

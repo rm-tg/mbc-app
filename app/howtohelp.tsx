@@ -87,7 +87,7 @@ function HowToHelpScreen() {
                   with a team? Schedule a time and find
                   out what goods we can accept. 
                 </Text>
-                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/about')}>
+                <TouchableOpacity style={styles.nextButton} onPress={() => router.navigate('/drive')}>
                   <View style={styles.circle}>
                     <Image
                         source={require('../assets/howToHelp/right-arrow.png')}
@@ -102,9 +102,8 @@ function HowToHelpScreen() {
               The Maize and Blue Cupboard utilizes volunteers
               on a regular basis. If your group is interested in
               volunteering at the Cupboard, please contact us
-              at 
+              at{' '}
                 <Text style={styles.mailLink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
-                  {' '}
                   maize.blue.cupboard@umich.edu
                 </Text>
             </Text>
