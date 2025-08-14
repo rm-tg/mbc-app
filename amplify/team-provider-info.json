@@ -23,6 +23,9 @@
       },
       "storage": {
         "recipeContent": {}
+      },
+      "api": {
+        "mbct4sg": {}
       }
     }
   }

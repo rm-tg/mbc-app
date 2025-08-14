@@ -14,6 +14,11 @@ export const getPublicData = /* GraphQL */ `query GetPublicData($id: ID!) {
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename
@@ -34,6 +39,11 @@ export const listPublicData = /* GraphQL */ `query ListPublicData(
       title
       description
       image
+      tags
+      cookTime
+      servingSize
+      ingredients
+      prepSteps
       createdAt
       updatedAt
       __typename

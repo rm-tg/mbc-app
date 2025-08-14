@@ -6,6 +6,11 @@ type PublicData @model @auth(rules: [
   title: String!
   description: String!
   image: String!
+  tags: [String]
+  cookTime: Int
+  servingSize: Int
+  ingredients: [String]
+  prepSteps: [String]
 }
 
 type PushToken @model @auth(rules: [

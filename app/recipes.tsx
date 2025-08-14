@@ -12,6 +12,11 @@ type PublicData = {
   title: string;
   description: string;
   image: string; // Change from image URL to image ID
+  tags?: string[];
+  cookTime?: number;      // in minutes
+  servingSize?: number;   // number of servings
+  ingredients?: string[];
+  prepSteps?: string[];
 };
 
 type ListPublicDataQuery = {
@@ -49,10 +54,39 @@ function RecipesScreen() {
       <View style={styles.itemContainer}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>
+        {item.tags && item.tags.length > 0 && (
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 5 }}>
+            {item.tags.map((tag, idx) => (
+              <Text key={idx} style={{ backgroundColor: '#eee', marginRight: 5, padding: 3, borderRadius: 5 }}>{tag}</Text>
+            ))}
+          </View>
+        )}
+        {item.cookTime !== undefined && (
+          <Text>Cook Time: {item.cookTime} min</Text>
+        )}
+        {item.servingSize !== undefined && (
+          <Text>Serving Size: {item.servingSize}</Text>
+        )}
+        {item.ingredients && item.ingredients.length > 0 && (
+          <View>
+            <Text style={{ fontWeight: 'bold' }}>Ingredients:</Text>
+            {item.ingredients.map((ing, idx) => (
+              <Text key={idx}>- {ing}</Text>
+            ))}
+          </View>
+        )}
+        {item.prepSteps && item.prepSteps.length > 0 && (
+          <View>
+            <Text style={{ fontWeight: 'bold' }}>Preparation Steps:</Text>
+            {item.prepSteps.map((step, idx) => (
+              <Text key={idx}>{idx + 1}. {step}</Text>
+            ))}
+          </View>
+        )}
         {item.image && (
           <View style={styles.imageContainer}>
             <Image
-              source={{ uri: imageUrl }} // Use dynamically generated URL
+              source={{ uri: imageUrl }}
               style={styles.image}
               onError={(e) => console.error('Error loading image:', e.nativeEvent.error)}
             />
@@ -72,7 +106,7 @@ function RecipesScreen() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.container} // Corrected style referencetainer}
       />
-      <MenuBar/>
+      <MenuBar />
     </View>
   );
 }

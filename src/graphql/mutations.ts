@@ -17,6 +17,11 @@ export const createPublicData = /* GraphQL */ `mutation CreatePublicData(
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename
@@ -35,6 +40,11 @@ export const updatePublicData = /* GraphQL */ `mutation UpdatePublicData(
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename
@@ -53,6 +63,11 @@ export const deletePublicData = /* GraphQL */ `mutation DeletePublicData(
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename

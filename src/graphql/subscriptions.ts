@@ -16,6 +16,11 @@ export const onCreatePublicData = /* GraphQL */ `subscription OnCreatePublicData
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename
@@ -33,6 +38,11 @@ export const onUpdatePublicData = /* GraphQL */ `subscription OnUpdatePublicData
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename
@@ -50,6 +60,11 @@ export const onDeletePublicData = /* GraphQL */ `subscription OnDeletePublicData
     title
     description
     image
+    tags
+    cookTime
+    servingSize
+    ingredients
+    prepSteps
     createdAt
     updatedAt
     __typename
