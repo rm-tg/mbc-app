@@ -1,8 +1,7 @@
+import MenuBar from '@/components/MenuBar';
 import * as React from 'react';
-import { Image, LayoutAnimation, Linking, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, UIManager, View } from 'react-native';
-import BackButton from '../components/BackButton';
+import { Image, LayoutAnimation, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, UIManager, View } from 'react-native';
 import Banner from '../components/Banner';
-import ContactUs from '../components/contactUs';
 
 // Enable animation on Android
 if (Platform.OS === 'android') {
@@ -10,13 +9,9 @@ if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-interface SelectedState {
-  eligibility: boolean;
-  appointments: boolean;
-  other: boolean;
-}
+const tabs = ['Eligibility', 'Appointments', 'Other'];
 
-interface ExpandedEligibilityState {
+interface ExpandedState {
   whoCanUse: boolean;
   shortOnFood: boolean;
   financialAid: boolean;
@@ -24,9 +19,6 @@ interface ExpandedEligibilityState {
   itemLimit: boolean;
   mCard: boolean;
   volunteer: boolean;
-}
-
-interface ExpandedAppointmentState {
   shop: boolean;
   advanceAppointment: boolean;
   scheduleAppointments: boolean;
@@ -35,27 +27,35 @@ interface ExpandedAppointmentState {
   noLine: boolean;
   howLong: boolean;
   noAppointments: boolean;
+  privacyPolicy: boolean;
 }
 
-type SectionKey = 'eligibility' | 'appointments' | 'other';
-type EligibilityKey = 'whoCanUse' | 'shortOnFood' | 'financialAid' | 
-  'foodLimit' | 'itemLimit' | 'mCard' | 'volunteer';
-type AppointmentsKey = 'shop' | 'advanceAppointment' | 'scheduleAppointments' 
-  | 'appointmentSystem' | 'friend' | 'noLine' | 'howLong' | 'noAppointments';
-type OtherKey = 'privacyPolicy';
+type SectionKey = 'whoCanUse' | 'shortOnFood' | 'financialAid' | 
+  'foodLimit' | 'itemLimit' | 'mCard' | 'volunteer' | 'shop' |
+  'advanceAppointment' | 'scheduleAppointments' |
+  'appointmentSystem' | 'friend' | 'noLine' | 'howLong' |
+  'noAppointments' | 'privacyPolicy';
 
 function FAQScreen() {
+  const [selectedTab, setSelectedTab] = React.useState('Eligibility');
 
-  const [selected, setSelected] = React.useState<SelectedState>({
-      eligibility: true,
-      appointments: false,
-      other: false,
-    });
-
-  const [expanded, setExpandedEligibility] = React.useState<ExpandedState>({
-      eligibility: false,
-      appointments: false,
-      other: false,
+  const [expanded, setExpanded] = React.useState<ExpandedState>({
+      whoCanUse: false,
+      shortOnFood: false,
+      financialAid: false,
+      foodLimit: false,
+      itemLimit: false,
+      mCard: false,
+      volunteer: false,
+      shop: false,
+      advanceAppointment: false,
+      scheduleAppointments: false,
+      appointmentSystem: false,
+      friend: false,
+      noLine: false,
+      howLong: false,
+      noAppointments: false,
+      privacyPolicy: false,
     });
 
   const toggleSection = (section: SectionKey) => {
@@ -65,116 +65,368 @@ function FAQScreen() {
 
   return (
     <View style={styles.mainContainer}>
-      <ScrollView style={styles.mainContainer} >
+      <ScrollView contentContainerStyle={{paddingBottom: 100,}}>
         <Banner/>
-        <BackButton/>
         <View style={styles.content}>
           <View style={{paddingHorizontal: 30}}>
             <Text style={styles.heading}>
               Frequently Asked Questions
             </Text>
           </View>
-          
-          <View style={styles.dropdownContainer}>
-            <View style={styles.dropdown}>
-              <TouchableOpacity onPress={() => toggleSection('personal')} style={styles.header}>
-                <Text style={styles.dropTitle}>Personal Care Items Donation List</Text>
-                <View style={styles.iconContainer}>
-                  <Image
-                    source={require("../assets/drive/downArrow.png")}
-                    style={[
-                      styles.icon,
-                      expanded.personal && { transform: [{ rotate: '180deg' }] }
-                    ]}
-                  />
-                </View>
-              </TouchableOpacity>
-              {expanded.personal && (
-                <View>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                </View>
-              )}
-            </View>
-            <View style={styles.dropdown}>
-              <TouchableOpacity onPress={() => toggleSection('spice')} style={styles.header}>
-                <Text style={styles.dropTitle}>Spice Donation List</Text>
-                <View style={styles.iconContainer}>
-                  <Image
-                    source={require("../assets/drive/downArrow.png")}
-                    style={[
-                      styles.icon,
-                      expanded.spice && { transform: [{ rotate: '180deg' }] }
-                    ]}
-                  />
-                </View>
-              </TouchableOpacity>
-              {expanded.spice && (
-                <View>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                </View>
-              )}
-            </View>
-            <View style={styles.dropdown}>
-              <TouchableOpacity onPress={() => toggleSection('cookware')} style={styles.header}>
-                <Text style={styles.dropTitle}>Cookware Donation List</Text>
-                <View style={styles.iconContainer}>
-                  <Image
-                    source={require("../assets/drive/downArrow.png")}
-                    style={[
-                      styles.icon,
-                      expanded.cookware && { transform: [{ rotate: '180deg' }] }
-                    ]}
-                  />
-                </View>
-              </TouchableOpacity>
-              {expanded.cookware && (
-                <View>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                </View>
-              )}
-            </View>
-          </View>
-          <Text style={styles.bodyTextThird}>
-              {'\n'}
-              For access to our flyer materials, email
-              template, and drop off instructions, view
-              our information here:{' '}
-              <Text style={styles.hyperlink} onPress={() =>
-                  Linking.openURL('https://mbc.studentlife.umich.edu/how-to-help/hosting-a-donation-drive/')}>
-                  https://mbc.studentlife.umich.edu/how-to-help/hosting-a-donation-drive/
+        </View>
+        <View style={styles.buttonGroup}>
+          {tabs.map((tab) => (
+            <TouchableOpacity
+              key={tab}
+              onPress={() => setSelectedTab(tab)}
+              style={[
+                styles.button,
+                selectedTab === tab ? styles.buttonSelected : styles.buttonUnselected
+              ]}
+            >
+              <Text
+                style={[
+                  styles.buttonText,
+                  selectedTab === tab ? styles.textSelected : styles.textUnselected
+                ]}
+              >
+                {tab}
               </Text>
-          </Text>
-          <Text style={styles.bottomParagraph}>
-            The Maize and Blue Cupboard utilizes volunteers
-            on a regular basis. If your group is interested in
-            volunteering at the Cupboard, please contact us
-            at{' '}
-              <Text style={styles.hyperlink} onPress={() => Linking.openURL('mailto:maize.blue.cupboard@umich.edu')}>
-                maize.blue.cupboard@umich.edu
-              </Text>
-          </Text>
-          <ContactUs/>
-          <Image
-            style={styles.mbcSignature}
-            source={require('../assets/mbc-signature-horizontal.png')}
-          />
+            </TouchableOpacity>
+          ))}
+        </View>
+        <View style={styles.dropdownContainer}>
+          {selectedTab === 'Eligibility' ? (
+            <View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('whoCanUse')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Who can use the Maize and Blue Cupboard?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.whoCanUse && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.whoCanUse && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('shortOnFood')} style={styles.header}>
+                  <Text style={styles.dropTitle}>I'm short on food, but I don't feel like I need “help.” Can I still come?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.shortOnFood && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.shortOnFood && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('financialAid')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Will using the Maize and Blue Cupboard affect my financial aid?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.financialAid && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.financialAid && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('foodLimit')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Is there a limit on how much food I can take?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.foodLimit && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.foodLimit && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('itemLimit')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Are there limits on personal care items or cookware?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.itemLimit && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.itemLimit && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('mCard')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Do I need to show my MCard each time I visit?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.mCard && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.mCard && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('volunteer')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Am I eligible to volunteer at the Maize and Blue Cupboard?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.volunteer && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.volunteer && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={{marginTop: 20,}}></View>
+            </View>
+          ): (
+            <View>
+            </View>
+          )}
+          {selectedTab === 'Appointments' ? (
+            <View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('shop')} style={styles.header}>
+                  <Text style={styles.dropTitle}>When can I shop?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.shop && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.shop && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('advanceAppointment')} style={styles.header}>
+                  <Text style={styles.dropTitle}>How far in advance can I make an appointment?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.advanceAppointment && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.advanceAppointment && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('scheduleAppointments')} style={styles.header}>
+                  <Text style={styles.dropTitle}>How often can I schedule appointments?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.scheduleAppointments && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.scheduleAppointments && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('appointmentSystem')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Why does the Maize and Blue Cupboard use an appointment system?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.appointmentSystem && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.appointmentSystem && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('friend')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Can I bring a friend with me to my appointment?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.friend && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.friend && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('noLine')} style={styles.header}>
+                  <Text style={styles.dropTitle}>Do I need an appointment even if there's no line?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.noLine && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.noLine && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('howLong')} style={styles.header}>
+                  <Text style={styles.dropTitle}>How long do appointments last? Can I shop longer than 15 minutes?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.howLong && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.howLong && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('noAppointments')} style={styles.header}>
+                  <Text style={styles.dropTitle}>What if there are no available appointments for a few days?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.noAppointments && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.noAppointments && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={{marginTop: 20,}}></View>
+            </View>
+          ): (
+            <View>
+            </View>
+          )}
+          {selectedTab === 'Other' ? (
+            <View>
+              <View style={styles.dropdown}>
+                <TouchableOpacity onPress={() => toggleSection('privacyPolicy')} style={styles.header}>
+                  <Text style={styles.dropTitle}>What is your privacy policy?</Text>
+                  <View style={styles.iconContainer}>
+                    <Image
+                      source={require("../assets/drive/downArrow.png")}
+                      style={[
+                        styles.icon,
+                        expanded.privacyPolicy && { transform: [{ rotate: '180deg' }] }
+                      ]}
+                    />
+                  </View>
+                </TouchableOpacity>
+                {expanded.privacyPolicy && (
+                  <View>
+                    <Text>Lorem Ipsum</Text>
+                  </View>
+                )}
+              </View>
+              <View style={{marginTop: 20,}}></View>
+            </View>
+          ): (
+            <View>
+            </View>
+          )}
         </View>
       </ScrollView>
+      <MenuBar/>
     </View>
   );
 }
@@ -186,91 +438,69 @@ const styles = StyleSheet.create({
     },
     content: {
       alignItems: 'center',
-      paddingBottom: 105,
-    },
-    image: {
-      width: "100%",
-      height: "100%",
-      resizeMode: "contain",
+      paddingBottom: 35,
     },
     heading: {
+      marginTop: 24,
       fontSize: 24,
       fontFamily: "Montserrat_700Bold",
       color: '#00274C',
       textAlign: 'center',
     },
-    subHeading: {
+    arrow: {
       fontSize: 16,
+      color: '#002b5c',
+      marginLeft: 8,
+    },
+    iconContainer: {
+      width: 20,
+      height: 56,
+      paddingLeft: 5
+    },
+    icon: {
+      flex: 1,
+      width: null,
+      height: null,
+      resizeMode: 'contain'
+    },
+    buttonGroup: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      paddingBottom: 7,
+    },
+    button: {
+      paddingVertical: 12,
+      paddingHorizontal: 20,
+      marginHorizontal: 5,
+      borderRadius: 5,
+    },
+    buttonSelected: {
+      backgroundColor: '#00274C', // Dark blue
+    },
+    buttonUnselected: {
+      backgroundColor: '#D9D9D9', // Light grey
+    },
+    textSelected: {
+      color: '#FFFFFF',
+    },
+    textUnselected: {
+      color: '#000000',
+    },
+    buttonText: {
+      fontSize: 14,
       fontFamily: "Montserrat_700Bold",
-      color: '#00274C',
-      textAlign: 'center',
-      paddingTop: 35,
-    },
-    bodyTextFirst: {
-      fontSize: 14,
-      fontFamily: "Montserrat_400Regular",
-      color: '#000000',
-      textAlign: 'center',
-      paddingHorizontal: 57,
-      lineHeight: 19.6
-    },
-    bodyTextSecond: {
-      fontSize: 14,
-      fontFamily: "Montserrat_400Regular",
-      color: '#000000',
-      textAlign: 'center',
-      paddingHorizontal: 40,
-      paddingBottom: 32,
-      lineHeight: 19.6
-    },
-    bodyTextThird: {
-      fontSize: 14,
-      fontFamily: "Montserrat_400Regular",
-      color: '#000000',
-      textAlign: 'center',
-      paddingHorizontal: 55,
-      lineHeight: 19.6
-    },
-    bottomParagraph: {
-      textAlign: 'center',
-      fontSize: 12,
-      fontFamily: "Montserrat_500Medium",
-      paddingTop: 27,
-      paddingHorizontal: 55,
-      paddingBottom: 20,
-    },
-    hyperlink: {
-      textAlign: 'center',
-      fontSize: 13,
-      fontFamily: "Montserrat_500Medium",
-      paddingTop: 27,
-      paddingHorizontal: 40,
-      color: 'blue',
-      textDecorationLine: 'underline',
-    },
-    mbcSignature: {
-      width: '54.1%',
-      height: undefined,
-      aspectRatio: 211 / 28,
-      marginTop: 35,
-      resizeMode: "contain",
     },
     dropdownContainer: {
-      paddingTop: 19,
-      //Best practice is dead, I killed it
-      paddingBottom: -1,
-      paddingHorizontal: 16,
-      width: 346,
-      backgroundColor: '#002b5c',
-      flex: 1,
-      borderRadius: 10,
+      backgroundColor: '#00274C',
+      marginHorizontal: 20,
+      borderRadius: 5,
     },
     dropdown: {
       backgroundColor: '#FFFFFF',
-      marginBottom: 20,
       borderRadius: 6,
       paddingHorizontal: 8,
-      paddingVertical: 13,
+      marginHorizontal: 16,
+      marginTop: 20,
       borderWidth: 2,
       borderColor: '#FFCB05',
     },
@@ -281,26 +511,10 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       flex: 1,
     },
-    arrow: {
-      fontSize: 16,
-      color: '#002b5c',
-      marginLeft: 8,
-    },
     header: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-    },
-    iconContainer: {
-      width: 20,
-      height: 20,
-      paddingLeft: 5
-    },
-    icon: {
-      flex: 1,
-      width: null,
-      height: null,
-      resizeMode: 'contain'
     },
   });
 
