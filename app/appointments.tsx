@@ -109,9 +109,7 @@ function AppointmentsScreen() {
           source={require('../assets/mbc-signature-horizontal.png')}
         />
       </ScrollView>
-      <View>
-        <MenuBar/>
-      </View>
+      <MenuBar/>
     </View>
     
   );

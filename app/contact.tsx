@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       position: 'relative',
-      paddingBottom: 100,
     },
     welcomeText: {
       color: "black", 

@@ -131,11 +131,6 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
     },
-    image: {
-      width: "100%", // Make the image take full width
-      height: "100%", // Make the image take full height
-      resizeMode: "contain",
-    },
     heading: {
       fontSize: 24,
       fontFamily: "Montserrat_700Bold",
