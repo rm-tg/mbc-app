@@ -85,12 +85,30 @@ function DriveScreen() {
               </TouchableOpacity>
               {expanded.personal && (
                 <View>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
+                  <Text>Food can be expensive, and so can personal and household items. Please consider donating new, unopened:{'\n'}
+                    • Hand soap{'\n'}
+                    • Dish soap{'\n'}
+                    • Sponges{'\n'}
+                    • Laundry soap{'\n'}
+                    • Dishwasher detergent{'\n'}
+                    • Toilet paper{'\n'}
+                    • Paper towel{'\n'}
+                    • Facial tissues{'\n'}
+                    • Garbage bags{'\n'}
+                    • Lysol wipes{'\n'}
+                    • Toothbrushes{'\n'}
+                    • Toothpaste{'\n'}
+                    • Floss{'\n'}
+                    • Shampoo{'\n'}
+                    • Conditioner{'\n'}
+                    • Body wash{'\n'}
+                    • Lotion{'\n'}
+                    • Deodorant{'\n'}
+                    • Feminine products{'\n'}
+                    • Condoms{'\n'}
+                    • Baby items{'\n'}
+                    • School/office supplies{'\n'}
+                  </Text>
                 </View>
               )}
             </View>
@@ -109,12 +127,29 @@ function DriveScreen() {
               </TouchableOpacity>
               {expanded.spice && (
                 <View>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
+                  <Text>Donate unopened, dry, ground herbs and spices whenever possible. By donating spices,
+                     you help enable students to flavor their food in a healthy and tasty way. We accept spices such as:{'\n'}
+                    • Cinnamon{'\n'}
+                    • Red pepper flakes{'\n'}
+                    • Ground ginger{'\n'}
+                    • Garlic powder{'\n'}
+                    • Black pepper{'\n'}
+                    • Paprika{'\n'}
+                    • Onion powder{'\n'}
+                    • Dried basil{'\n'}
+                    • Dried oregano{'\n'}
+                    • Nutmeg{'\n'}
+                    • Cumin{'\n'}
+                    • Cayenne{'\n'}
+                    • Dried thyme{'\n'}
+                    • Dried parsley{'\n'}
+                    • Dried rosemary{'\n'}
+                    • Adobo{'\n'}
+                    • Jerk{'\n'}
+                    • Salt{'\n'}
+                    • Old Bay Seasoning{'\n'}
+                    • Sugar
+                  </Text>
                 </View>
               )}
             </View>
@@ -133,12 +168,26 @@ function DriveScreen() {
               </TouchableOpacity>
               {expanded.cookware && (
                 <View>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
-                  <Text>Lorem Ipsum</Text>
+                  <Text>
+                    We love providing students with food, but it can be rendered useless if they do not
+                     have the proper equipment to prepare and eat it. We accept new and gently used cookware, such as:{'\n'}
+                    • Pots{'\n'}
+                    • Pans{'\n'}
+                    • Can openers{'\n'}
+                    • Spatulas{'\n'}
+                    • Tupperware{'\n'}
+                    • Cutting boards{'\n'}
+                    • Knives{'\n'}
+                    • Plates{'\n'}
+                    • Bowls{'\n'}
+                    • Silverware{'\n'}
+                    • Mugs{'\n'}
+                    • Measuring cups{'\n'}
+                    • Measuring spoons{'\n'}
+                    • Graters{'\n'}
+                    • Vegetable peelers{'\n'}
+                    • Strainers{'\n'}
+                  </Text>
                 </View>
               )}
             </View>
